@@ -2,25 +2,27 @@
 body {
   display: inline-block;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0% auto;
+  padding: 0% auto;
   color: white;
+  width: auto;
 }
 
 .container {
-  margin: 0 auto;
-  width: 90%;
+  width: auto 90%;
+
   margin: 0 8% 0 8%;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 250%;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 20%;
   color: black;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 110%;
   margin-top: 20px;
   color: black;
 }
@@ -97,6 +99,20 @@ button.card:hover {
   justify-content: center;
   align-items: center;
   width: fit-content;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  animation: cardAnimation 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+  color: white;
+}
+.glass-panell {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
   margin: 40px auto;
   background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -148,72 +164,75 @@ button.card:hover {
 }
 
 /* Background */
-html {
+html {width: auto;
   background-image: radial-gradient(1128px circle at 76.39% 1.13%, #fafefe 0%, #62ebed 100%);
 }
 
 /* Navbar */
-.container {
-  display: block;
-  justify-content: center;
+.navbar {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  padding: 0;
-  margin: 0 5% 0 5%;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  border-radius: 10px;
+}
+/* Glassmorphism Button */
+button.glass-button {
+  padding: 10px 18px;
+  display: none;
+  margin: 5% auto;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  justify-content: space-evenly; // Add this line
 }
 
-.show-menu {
+button.glass-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 1);
+}
+/* Submenu */
+
+/* Create a custom checkbox */
+.checkbox-menu + label {
+  position: relative;
+  padding-left: 35px; /* Space for the custom checkbox */
   cursor: pointer;
 }
 
-input.checkbox-menu[type="checkbox"] {
-  display: none;
-  -webkit-appearance: none;
+/* Create a custom box */
+.checkbox-menu + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 25px; /* Size of the custom checkbox */
+  height: 25px;
+  border: 2px solid #000; /* Border color */
+  background: #fff; /* Background color */
 }
 
-input.checkbox-menu[type="checkbox"]:checked ~ div.menu-block {
-  opacity: 1;
-  visibility: visible;
-}
-
-.nav-icon {
-  display: inline-block;
-  font-size: 1.5em;
-  padding: 0.5em;
-  vertical-align: middle;
-}
-
-.menu-block {
-  display: inline-block;
-  opacity: 0;
-  vertical-align: middle;
-  visibility: hidden;
-  -webkit-transition: all 0.25s;
-  -moz-transition: all 0.25s;
-  -ms-transition: all 0.25s;
-  -o-transition: all 0.25s;
-  transition: all 0.25s;
-}
-
-ul.navUL {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul.navUL li {
-  display: inline-block;
-  padding: 0px 5px;
-}
-
-ul.navUL li a {
-  color: #999999;
-  display: block;
-  padding: 3px;
-  text-decoration: none;
-}
-
-ul.navUL li a:hover {
-  color: #000000;
-  text-decoration: none;
+/* Create the checkmark */
+.checkbox-menu:checked + label:after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 5px;
+  width: 8px;
+  height: 14px;
+  border: solid #000;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
