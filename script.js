@@ -1,18 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var checkbox = document.querySelector('.checkbox-menu');
-    var buttons = document.querySelectorAll('.glass-button');
-
-    checkbox.addEventListener('change', function() {
-        if (this.checked) {
-            buttons.forEach(function(button) {
-                button.style.display = 'inline-block';
-            });
-            console.log('checked');
+    window.addEventListener('scroll', function() {
+        var glassButton = document.getElementById('glass-button');
+        if (window.scrollY > 0) {
+            glassButton.style.display = 'block';
         } else {
-            buttons.forEach(function(button) {
-                button.style.display = 'none';
-            });
-            console.log('unchecked');
+            glassButton.style.display = 'none';
         }
-    });
-});
+      })});
