@@ -197,7 +197,7 @@ button.glass-button {
   letter-spacing: 2px;
   text-transform: uppercase;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  justify-content: space-evenly; // Add this line
+  justify-content: space-evenly;
 }
 
 button.glass-button:hover {
