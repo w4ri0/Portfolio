@@ -170,11 +170,12 @@ html {width: auto;
 
 /* Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: inline-block;
+  align-items: left;
   padding: 0px;
   background-color: rgba(0, 0, 0, 0.8);
+  width: 95%;
+  margin: 0 auto  ;
 }
 nav {
   display: flex;
