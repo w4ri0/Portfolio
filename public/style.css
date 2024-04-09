@@ -15,8 +15,8 @@
 }
 /* Body & Container */
 body {
-  display: inline-block;
-  /* Changed from inline-block for full viewport height */
+  display: inline-flex;
+  /* Changed from inline-flex for full viewport height */
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -30,7 +30,7 @@ body {
 }
 
 .container {
-  display: inline-block;
+  display: inline-flex;
   /* Consistent with body */
   justify-content: center;
   align-items: center;
@@ -83,20 +83,20 @@ p {
 
 
 .nav-icon {
-  display: inline-block;
+  display: inline-flex;
   font-size: 1.5em;
   padding: 0.5em;
   vertical-align: middle;
 }
 
 .menu-block {
-  display: inline-block;
+  display: inline-flex;
   opacity: 1;
   vertical-align: middle;
   visibility: visible;
 }
 #menu-block {
-  display: inline-block;
+  display: inline-flex;
   opacity: 1;
   vertical-align: middle;
   visibility: visible;
@@ -106,20 +106,20 @@ ul.navUL {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: inline-block;
+  display: inline-flex;
   opacity: 1;
   visibility: visible;
 }
 
 ul.navUL li {
-  display: inline-block;
+  display: inline-flex;
   padding: 0px 3px;
   animation: fadeIn 1s ease-in-out;
 }
 
 ul.navUL li a {
   color: var(--darkest);
-  display: inline-block;
+  display: inline-flex;
   padding: 3px;
   text-decoration: none;
   animation: fadeIn 1s ease-in-out;
@@ -160,7 +160,7 @@ ul.navUL li a:hover {
 
 .navUL{
   color: var(--darkest);
-  display: inline-block;
+  display: inline-flex;
   
 }
 #menu-block ul li a:hover {
@@ -174,13 +174,13 @@ ul.navUL li a:hover {
   }
 
   #show-menu {
-    display: inline-block;
+    display: inline-flex;
   }
 }
 
 @media screen and (min-width:768px) {
   #menu-block {
-    display: inline-block;
+    display: inline-flex;
   }
 
   #show-menu {
@@ -191,7 +191,7 @@ ul.navUL li a:hover {
 /* Buttons */
 button.card {
   padding: 10px;
-  display: inline-block;
+  display: inline-flex;
   margin: 10px auto;
   /* Center buttons horizontally */
   text-decoration: none;
