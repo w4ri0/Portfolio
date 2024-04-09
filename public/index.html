@@ -22,49 +22,114 @@
       to avoid connecting the SDK to running emulators.
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Gabriel DAGON</title>
+      <link rel="stylesheet" href="style.css">
+      </head>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
+      <body class="container"></body><header class="navbar glass-panel">
+      <nav>
+                      <label for="id-show-menu" class="show-menu">
+                      <div class="nav-icon">
+                               </div></label>
+                      <div class="menu-block">
+                      <button class="glass-button">Projets</button>
+                      <button class="glass-button">Contact</button>
+                      </ul>
+                      </div>
+                    </nav>
+        </header>
+              <div class="glass-panell">
+      <h1>Mon site web</h1>
+      <p>Je suis Gabriel DAGON, je travaille chez digitanie en tant qu'opérateur numérique</p>
+      <p>Je suis passionné par le développement web et je commencer une formation sur développement web</p>
+      </div><div class="glass-panell"><button class="card">Les langages que je vais apprendre</button>
+      
+              <p>HTML</p>
+              <p>CSS</p>
+              <p>JavaScript</p>
+              <p>PHP</p>
+              <p>MySQL</p>
+      </div>
+      <div class="glass-panell"><button class="card">Les frameworks que je vais apprendre</button>
+              <p>Bootstrap</p>
+              <p>jQuery</p>
+              <p>Angular</p>
+              <p>React</p>
+              <p>Vue.js</p>
+      </div>
+      <div class="glass-panell"><button class="card">Les CMS que je vais apprendre</button>
+              <p>WordPress</p>
+              <p>Joomla</p>
+              <p>Prestashop</p>
+      </div>
+      <div class="glass-panell">
+      <button class="card">Les outils que je vais apprendre</button>
+              <p>Git</p>
+              <p>Visual Studio Code</p>
+              <p>Sublime Text</p>
+      </div>
+      <div class="glass-panell">
+      <button class="card">Mes compétences</button>
+              <p>Travail en équipe</p>
+              <p>Communication</p>
+              <p>Adaptabilité</p>
+              <p>Créativité</p>
+              <p>Autonomie</p>
+              <p>Passionné</p>
+              <p>Curieux</p>
+              <p>Esprit d'analyse</p>
+              <p>Esprit critique</p>
+              <p>Esprit de service</p>
+      </div>
+      <div class="glass-panell">
+      <button class="card">Mon parcours scolaire</button>
+      <p>Baccalauréat professionnel</p>
+      </div><div class="glass-panell">
+      <button class="card">Mon expérience professionnelle</button>
+      <p>Opérateur numérique chez digitanie</p>
+      </div>
+      <script src="script.js"></script>
+      <footer>
+              <p>© 2024 Gabriel DAGON</p>
+      </footer>
+      
+      <script type="module">
+      
+              // Import the functions you need from the SDKs you need
+            
+              import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+            
+              // TODO: Add SDKs for Firebase products that you want to use
+            
+              // https://firebase.google.com/docs/web/setup#available-libraries
+            
+            
+              // Your web app's Firebase configuration
+            
+              const firebaseConfig = {
+            
+                apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
+            
+                authDomain: "togoban.firebaseapp.com",
+            
+                projectId: "togoban",
+            
+                storageBucket: "togoban.appspot.com",
+            
+                messagingSenderId: "607349651499",
+            
+                appId: "1:607349651499:web:691fca00a6aca0df75526e"
+            
+              };
+            
+            
+              // Initialize Firebase
+            
+              const app = initializeApp(firebaseConfig);
+  
+     
         try {
           let app = firebase.app();
           let features = [
@@ -83,7 +148,7 @@
           console.error(e);
           loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
         }
-      });
+        ;
     </script>
   </body>
 </html>
