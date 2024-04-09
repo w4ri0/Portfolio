@@ -13,7 +13,7 @@
   --accent: #dc143c;
   /* Crimson */
 }
-
+html{width: 50lvw;}
 /* Body & Container */
 body {
   display: inline-block;
@@ -27,7 +27,7 @@ body {
   /* Adjust margins for better centering */
   color: var(--darkest);
   /* Use base text color for body text */
-  width: 50lvw;
+  
 }
 
 .container {
