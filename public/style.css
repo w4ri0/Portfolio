@@ -27,6 +27,7 @@ body {
   /* Adjust margins for better centering */
   color: var(--darkest);
   /* Use base text color for body text */
+  width 50%;
 }
 
 .container {
