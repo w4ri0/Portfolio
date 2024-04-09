@@ -1,154 +1,168 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.10.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.10.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-performance-compat.js"></script>
-    <!-- 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to Firebase Hosting</title>
+
+  <!-- update the version numer as needed -->
+  <script defer src="/__/firebase/10.10.0/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/10.10.0/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/10.10.0/firebase-performance-compat.js"></script>
+  <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Gabriel DAGON</title>
-      <link rel="stylesheet" href="style.css">
-      </head>
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gabriel DAGON</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-      <body class="container"></body><header class="navbar glass-panel">
-      <nav>
-                      <label for="id-show-menu" class="show-menu">
-                      <div class="nav-icon">
-                               </div></label>
-                      <div class="menu-block">
-                      <button class="glass-button">Projets</button>
-                      <button class="glass-button">Contact</button>
-                      </ul>
-                      </div>
-                    </nav>
-        </header>
-              <div class="glass-panell">
-      <h1>Mon site web</h1>
-      <p>Je suis Gabriel DAGON, je travaille chez digitanie en tant qu'opérateur numérique</p>
-      <p>Je suis passionné par le développement web et je commencer une formation sur développement web</p>
-      </div><div class="glass-panell"><button class="card">Les langages que je vais apprendre</button>
-      
-              <p>HTML</p>
-              <p>CSS</p>
-              <p>JavaScript</p>
-              <p>PHP</p>
-              <p>MySQL</p>
+<body class="container"></body>
+<header class="navbar glass-panel">
+  <header class="navbar glass-panel">
+    <nav>
+      <button id="show-menu" class="show-menu">
+        <div class="nav-icon">
+          <i class="fa fa-navicon"></i>
+        </div>
+      </button>
+      <div class="menu-block">
+        <ul class="navUL">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Puppies</a></li>
+          <li><a href="#">Kittens</a></li>
+          <li><a href="#">Bunnies</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
       </div>
-      <div class="glass-panell"><button class="card">Les frameworks que je vais apprendre</button>
-              <p>Bootstrap</p>
-              <p>jQuery</p>
-              <p>Angular</p>
-              <p>React</p>
-              <p>Vue.js</p>
-      </div>
-      <div class="glass-panell"><button class="card">Les CMS que je vais apprendre</button>
-              <p>WordPress</p>
-              <p>Joomla</p>
-              <p>Prestashop</p>
-      </div>
-      <div class="glass-panell">
-      <button class="card">Les outils que je vais apprendre</button>
-              <p>Git</p>
-              <p>Visual Studio Code</p>
-              <p>Sublime Text</p>
-      </div>
-      <div class="glass-panell">
-      <button class="card">Mes compétences</button>
-              <p>Travail en équipe</p>
-              <p>Communication</p>
-              <p>Adaptabilité</p>
-              <p>Créativité</p>
-              <p>Autonomie</p>
-              <p>Passionné</p>
-              <p>Curieux</p>
-              <p>Esprit d'analyse</p>
-              <p>Esprit critique</p>
-              <p>Esprit de service</p>
-      </div>
-      <div class="glass-panell">
-      <button class="card">Mon parcours scolaire</button>
-      <p>Baccalauréat professionnel</p>
-      </div><div class="glass-panell">
-      <button class="card">Mon expérience professionnelle</button>
-      <p>Opérateur numérique chez digitanie</p>
-      </div>
-      <script src="script.js"></script>
-      <footer>
-              <p>© 2024 Gabriel DAGON</p>
-      </footer>
-      
-      <script type="module">
-      
-              // Import the functions you need from the SDKs you need
-            
-              import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-            
-              // TODO: Add SDKs for Firebase products that you want to use
-            
-              // https://firebase.google.com/docs/web/setup#available-libraries
-            
-            
-              // Your web app's Firebase configuration
-            
-              const firebaseConfig = {
-            
-                apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
-            
-                authDomain: "togoban.firebaseapp.com",
-            
-                projectId: "togoban",
-            
-                storageBucket: "togoban.appspot.com",
-            
-                messagingSenderId: "607349651499",
-            
-                appId: "1:607349651499:web:691fca00a6aca0df75526e"
-            
-              };
-            
-            
-              // Initialize Firebase
-            
-              const app = initializeApp(firebaseConfig);
-  
-     
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-        ;
-    </script>
+    </nav>
+  </header>
+  <div class="glass-panel">
+    <h1>Mon site web</h1>
+    <p>Je suis Gabriel DAGON, je travaille chez digitanie en tant qu'opérateur numérique</p>
+    <p>Je suis passionné par le développement web et je commencer une formation sur développement web</p>
+  </div>
+  <div class="glass-panel"><button class="card">Les langages que je vais apprendre</button>
+
+    <p>HTML</p>
+    <p>CSS</p>
+    <p>JavaScript</p>
+    <p>PHP</p>
+    <p>MySQL</p>
+  </div>
+  <div class="glass-panel"><button class="card">Les frameworks que je vais apprendre</button>
+    <p>Bootstrap</p>
+    <p>jQuery</p>
+    <p>Angular</p>
+    <p>React</p>
+    <p>Vue.js</p>
+  </div>
+  <div class="glass-panel"><button class="card">Les CMS que je vais apprendre</button>
+    <p>WordPress</p>
+    <p>Joomla</p>
+    <p>Prestashop</p>
+  </div>
+  <div class="glass-panel">
+    <button class="card">Les outils que je vais apprendre</button>
+    <p>Git</p>
+    <p>Visual Studio Code</p>
+    <p>Sublime Text</p>
+  </div>
+  <div class="glass-panel">
+    <button class="card">Mes compétences</button>
+    <p>Travail en équipe</p>
+    <p>Communication</p>
+    <p>Adaptabilité</p>
+    <p>Créativité</p>
+    <p>Autonomie</p>
+    <p>Passionné</p>
+    <p>Curieux</p>
+    <p>Esprit d'analyse</p>
+    <p>Esprit critique</p>
+    <p>Esprit de service</p>
+  </div>
+  <div class="glass-panel">
+    <button class="card">Mon parcours scolaire</button>
+    <p>Baccalauréat professionnel</p>
+  </div>
+  <div class="glass-panel">
+    <button class="card">Mon expérience professionnelle</button>
+    <p>Opérateur numérique chez digitanie</p>
+  </div>
+
+  <footer>
+    <script src="script.js"></script>
+    <p>© 2024 Gabriel DAGON</p>
+  </footer>
+
+
+  <script type="module">
+
+    // Import the functions you need from the SDKs you need
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+    // Your web app's Firebase configuration
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
+
+      authDomain: "togoban.firebaseapp.com",
+
+      projectId: "togoban",
+
+      storageBucket: "togoban.appspot.com",
+
+      messagingSenderId: "607349651499",
+
+      appId: "1:607349651499:web:691fca00a6aca0df75526e"
+
+    };
+
+
+    // Initialize Firebase
+
+    const app = initializeApp(firebaseConfig);
+
+
+    try {
+      let app = firebase.app();
+      let features = [
+        'auth',
+        'database',
+        'firestore',
+        'functions',
+        'messaging',
+        'storage',
+        'analytics',
+        'remoteConfig',
+        'performance',
+      ].filter(feature => typeof app[feature] === 'function');
+      loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+    } catch (e) {
+      console.error(e);
+      loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+    }
+    ;
+  </script>
   </body>
+
 </html>
