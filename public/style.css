@@ -198,6 +198,10 @@ button.card {
   border-radius: 15px;
   background-color: var(--lighter);
   color: var(--darkest);
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
+  text-align: center;
 }
 /* Page Loading Animation */
 .loading-animation {
@@ -224,4 +228,26 @@ button.card {
   100% {
     opacity: 1;
   }
+}
+/* CSS */
+#loadingScreen {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loadingScreen img {
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
