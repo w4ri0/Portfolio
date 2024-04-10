@@ -13,9 +13,11 @@
   --accent: #dc143c;
   /* Crimson */
 }
+html {
+  margin-top: 4%;
+}
 /* Body & Container */
 body {
-  display: inline-flex;
   /* Changed from inline-flex for full viewport height */
   justify-content: center;
   align-items: center;
@@ -26,7 +28,6 @@ body {
   /* Adjust margins for better centering */
   color: var(--darkest);
   /* Use base text color for body text */
-  
 }
 
 .container {
@@ -64,7 +65,7 @@ h1 {
   font-size: 3rem;
   text-align: center;
   margin-top: 20px;
-  color: var(--accent);
+  color: #26bb98;
   /* Use accent color for headings */
 }
 
@@ -79,8 +80,6 @@ p {
 .show-menu {
   cursor: pointer;
 }
-
-
 
 .nav-icon {
   display: inline-flex;
@@ -151,34 +150,40 @@ ul.navUL li a:hover {
   -o-border-radius: 5%;
   margin: 5px;
   cursor: pointer;
-  ;
 }
 
 #menu-block {
   display: none;
 }
 
-.navUL{
+.navUL {
   color: var(--darkest);
   display: inline-flex;
-  
-}
-#menu-block ul li a:hover {
-  color: var(--accent);
-  text-decoration: none;
 }
 
-@media screen and (max-width:768px) {
-  #menu-block {
-    display: none;
-  }
-
-  #show-menu {
-    display: inline-flex;
-  }
+/* Add styles for the navigation menu animation */
+#nav-menu {
+  transition: all 0.5s ease;
 }
 
-@media screen and (min-width:768px) {
+#nav-menu.hide {
+  transform: translateX(-100%);
+}
+
+/* Add styles for the loading screen */
+#loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+@media screen and (min-width: 768px) {
   #menu-block {
     display: inline-flex;
   }
@@ -230,24 +235,21 @@ button.card {
   }
 }
 /* CSS */
-#loadingScreen {
-  position: fixed;
-  z-index: 999;
-  width: 100%;
-  height: 100%;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-#loadingScreen img {
-  width: 100px;
-  height: 100px;
+#spinner {
+  border: 16px solid #bb2649; /* Light grey */
+  border-top: 16px solid #26bb98; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
   animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
