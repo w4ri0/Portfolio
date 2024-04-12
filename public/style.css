@@ -253,6 +253,7 @@ li {
     border: 16px solid #26bb98;
     animation: zoomOut 0.4s ease-out;
     -webkit-animation: zoomIn 0.4s ease-out;
+    background: none
   }
 
 
@@ -308,6 +309,7 @@ li {
     -moz-transform: scale(1.6);
     -ms-transform: scale(1.6);
     -o-transform: scale(1.6);
+    background: none;
   }
 
   95% {
