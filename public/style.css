@@ -306,3 +306,7 @@ ul.navUL li a:hover {
   color: var(--darkest);
   background: none;
 }
+
+.close:hover {
+  color: var(--base);
+}
