@@ -302,4 +302,6 @@ ul.navUL li a:hover {
   font-weight: 600;
   display: inline-block;
   transform: rotate(45deg);
+  border: none;
+  color: var(--darkest);
 }
