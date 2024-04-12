@@ -333,6 +333,6 @@ li {
 }
 
 .zoomOut {
-  animation: zoomOut 1.4s;
-  -webkit-animation: zoomOut 1.4s;
+  animation: zoomOut 1.45s;
+  -webkit-animation: zoomOut 1.45s;
 }
