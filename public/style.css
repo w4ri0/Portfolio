@@ -327,4 +327,6 @@ li {
   color: var(--base);
   animation: fade 0.4s;
   -webkit-animation: fade 0.4s;
+  touch-action: manipulation;
+  /* Add this line */
 }
