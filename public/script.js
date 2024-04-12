@@ -8,7 +8,7 @@ window.onload = function () {
     loadingScreen.classList.add("zoomOut");
     setTimeout(() => {
       loadingScreen.style.display = "none";
-    }, 700);
+    }, 1000);
   }, 400);
 };
 
