@@ -293,11 +293,6 @@ li {
   }
 }
 
-.zoomOut {
-  animation: zoomOut 1s;
-  -webkit-animation: zoomOut 1s;
-}
-
 @keyframes zoomOut {
   0% {
     transform: scale(1);
@@ -307,22 +302,7 @@ li {
     -o-transform: scale(1);
   }
 
-  100% {
-    transform: scale(1.6);
-    -webkit-transform: scale(1.6);
-    -moz-transform: scale(1.6);
-    -ms-transform: scale(1.6);
-    -o-transform: scale(1.6);
-  }
-}
-
-.zoomIn {
-  animation: zoomIn 0.2s;
-  -webkit-animation: zoomIn 0.2s;
-}
-
-@keyframes zoomIn {
-  0% {
+  66% {
     transform: scale(1.6);
     -webkit-transform: scale(1.6);
     -moz-transform: scale(1.6);
@@ -346,9 +326,13 @@ li {
   transition: fade 0.4s;
   animation: fade 0.2s;
   -webkit-animation: fade 0.2s;
-  /*Addthisline*/
   -webkit-transition: fade 0.4s;
   -moz-transition: fade 0.4s;
   -ms-transition: fade 0.4s;
   -o-transition: fade 0.4s;
+}
+
+.zoomOut {
+  animation: zoomOut 1.4s;
+  -webkit-animation: zoomOut 1.4s;
 }

@@ -6,10 +6,7 @@ window.onload = function () {
   setTimeout(() => {
     const loadingScreen = document.getElementById("loadingScreen");
     loadingScreen.classList.add("zoomOut");
-    setTimeout(() => {
-      loadingScreen.classList.add("zoomIn");
-    }, 1000);
-  }, 200);
+  }, 1400);
   setTimeout(() => {
     loadingScreen.style.display = "none";
   }, 1300);
