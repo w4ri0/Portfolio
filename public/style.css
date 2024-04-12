@@ -304,4 +304,5 @@ ul.navUL li a:hover {
   transform: rotate(45deg);
   border: none;
   color: var(--darkest);
+  background: none;
 }
