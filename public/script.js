@@ -9,7 +9,7 @@ window.onload = function () {
   spinner.classList.add("zoomOut");
   loadingScreen.classList.add("zoomOut");
   setTimeout(() => {
-    loadingScreen.style.background = "none";
+    loadingScreen.style.display = "none";
   }, 1400);
 };
 
