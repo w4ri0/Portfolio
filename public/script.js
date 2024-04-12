@@ -7,9 +7,10 @@ window.onload = function () {
     const loadingScreen = document.getElementById("loadingScreen");
     loadingScreen.classList.add("zoomOut");
     setTimeout(() => {
-      loadingScreen.style.display = "none";
+      loadingScreen.classList.add("zoomIn");
     }, 1000);
-  }, 400);
+  }, 200);
+  loadingScreen.style.display = "none";
 };
 
 showMenu.addEventListener("click", () => {
