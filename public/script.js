@@ -5,8 +5,8 @@ const closeButton = document.createElement("button");
 window.onload = function () {
   setTimeout(() => {
     const loadingScreen = document.getElementById("loadingScreen");
+    loadingScreen.classList.add("zoomOut");
     setTimeout(() => {
-      loadingScreen.classList.add("zoomOut");
       loadingScreen.style.display = "none";
     }, 700);
   }, 400);
