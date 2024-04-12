@@ -10,7 +10,9 @@ window.onload = function () {
       loadingScreen.classList.add("zoomIn");
     }, 1000);
   }, 200);
-  loadingScreen.style.display = "none";
+  setTimeout(() => {
+    loadingScreen.style.display = "none";
+  }, 1400);
 };
 
 showMenu.addEventListener("click", () => {
