@@ -159,9 +159,7 @@ li {
   top: 50%;
   left: 50%;
   right: 50%;
-  animation: spin 1.5s linear infinite;
   text-align: center;
-  -webkit-animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
@@ -343,6 +341,6 @@ li {
 }
 
 .zoomOut {
-  animation: zoomOut 1.45s;
-  -webkit-animation: zoomOut 1.45s;
+  animation: zoomOut spin 1.45s;
+  -webkit-animation: zoomOut spin 1.45s;
 }
