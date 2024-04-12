@@ -25,7 +25,7 @@ showMenu.addEventListener("click", () => {
   navUL.style.boxSizing = "border-box"; // I
   // Create and append the modal closing button
   const closeButton = document.createElement("button"); // Create the closing button element
-  closeButton.innerText = "X";
+  closeButton.innerText = "+";
   closeButton.classList.add("close"); // Add the "close" class to the closing button
   closeButton.style.position = "absolute";
   closeButton.style.top = "10px";
