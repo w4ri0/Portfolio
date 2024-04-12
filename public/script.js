@@ -7,7 +7,7 @@ window.onload = function () {
   const spinner = document.getElementById("spinner");
 
   spinner.classList.add("zoomOut");
-
+  loadingScreen.classList.add("zoomOut");
   setTimeout(() => {
     loadingScreen.style.display = "none";
   }, 1400);
