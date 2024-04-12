@@ -300,4 +300,6 @@ ul.navUL li a:hover {
 .close {
   font-size: 45px;
   font-weight: 600;
+  display: inline-block;
+  transform: rotate(45deg);
 }
