@@ -77,6 +77,10 @@ ul.navUL li a:hover {
   text-decoration: none
 }
 
+li {
+  margin: 2rem;
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;
