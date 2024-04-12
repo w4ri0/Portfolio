@@ -3,8 +3,10 @@ const showMenu = document.querySelector(".show-menu");
 const closeButton = document.createElement("button");
 
 window.onload = function () {
-  const loadingScreen = document.getElementById("spinner");
-  loadingScreen.classList.add("zoomOut");
+  const loadingScreen = document.getElementById("loadingScreen");
+  const spinner = document.getElementById("spinner");
+
+  spinner.classList.add("zoomOut");
 
   setTimeout(() => {
     loadingScreen.style.display = "none";
