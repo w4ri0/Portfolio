@@ -12,7 +12,7 @@ window.onload = function () {
   }, 200);
   setTimeout(() => {
     loadingScreen.style.display = "none";
-  }, 1400);
+  }, 1300);
 };
 
 showMenu.addEventListener("click", () => {
