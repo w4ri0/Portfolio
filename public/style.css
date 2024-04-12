@@ -316,7 +316,6 @@ li {
     -moz-transform: scale(0.1);
     -ms-transform: scale(0.1);
     -o-transform: scale(0.1);
-    background: none;
   }
 
   100% {
@@ -325,7 +324,6 @@ li {
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
-    display: none;
   }
 }
 
