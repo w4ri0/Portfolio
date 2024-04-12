@@ -325,6 +325,7 @@ li {
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
+    display: none;
   }
 }
 
