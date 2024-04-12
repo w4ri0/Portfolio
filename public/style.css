@@ -244,17 +244,14 @@ li {
 
   60% {
     transform: translate3d(-50%, -50%, 0) rotate(216deg);
-    border: 16px solid #bb2649;
-    border-top: 16px solid #26bb98;
-    border-bottom: 16px solid #26bb98;
+    border: 16px solid #26bb98;
   }
 
   65% {
     transform: translate3d(-50%, -50%, 0) rotate(234deg);
-    border: 16px solid #bb2649;
-    border-top: 16px solid #26bb98;
-    border-bottom: 16px solid #26bb98;
-
+    border: 16px solid #26bb98;
+    animation: zoomOut 0.4s ease-out;
+    -webkit-animation: zoomOut 0.4s ease-out;
   }
 
   70% {
@@ -270,27 +267,13 @@ li {
 
   80% {
     transform: translate3d(-50%, -50%, 0) rotate(288deg);
-
-  }
-
-  85% {
-    transform: translate3d(-50%, -50%, 0) rotate(306deg);
-  }
-
-  90% {
-    transform: translate3d(-50%, -50%, 0) rotate(324deg);
-
-  }
-
-  95% {
-    transform: translate3d(-50%, -50%, 0) rotate(342deg);
+    border: 16px solid #26bb98;
 
   }
 
   100% {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
-    border: 16px solid #26bb98;
-    animation: fadeOut 0.4s ease-out;
+
   }
 }
 
