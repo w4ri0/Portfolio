@@ -22,6 +22,7 @@ showMenu.addEventListener("click", () => {
   navUL.style.margin = "0 auto"; // Center the navUL element
   navUL.style.background = "white"; // Add a background color to navUL
   navUL.style.padding = "36%"; // Remove any existing padding
+  navUL.style.paddingBottom = "80%"; // Remove any existing padding-bottom
   navUL.style.margin = "0"; // Remove any existing margin
   navUL.style.width = "100%"; // Set the width to 100% to take the whole page
   navUL.style.boxSizing = "border-box"; // I
