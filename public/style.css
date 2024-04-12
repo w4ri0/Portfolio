@@ -251,28 +251,14 @@ li {
     transform: translate3d(-50%, -50%, 0) rotate(234deg);
     border: 16px solid #26bb98;
     animation: zoomOut 0.4s ease-out;
-    -webkit-animation: zoomOut 0.4s ease-out;
+    -webkit-animation: zoomIn 0.4s ease-out;
   }
 
-  70% {
-    transform: translate3d(-50%, -50%, 0) rotate(252deg);
-    border: 16px solid #26bb98;
 
-  }
-
-  75% {
-    transform: translate3d(-50%, -50%, 0) rotate(270deg);
-    border: 16px solid #26bb98;
-  }
-
-  80% {
-    transform: translate3d(-50%, -50%, 0) rotate(288deg);
-    border: 16px solid #26bb98;
-
-  }
 
   100% {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    border: 16px solid #26bb98;
 
   }
 }
