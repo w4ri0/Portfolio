@@ -73,7 +73,7 @@ ul.navUL li a {
 }
 
 ul.navUL li a:hover {
-  color: #000;
+  color: var(--secondary);
   text-decoration: none
 }
 
