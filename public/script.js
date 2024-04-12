@@ -3,13 +3,12 @@ const showMenu = document.querySelector(".show-menu");
 const closeButton = document.createElement("button");
 
 window.onload = function () {
-  setTimeout(() => {
-    const loadingScreen = document.getElementById("loadingScreen");
-    loadingScreen.classList.add("zoomOut");
-  }, 1400);
+  const loadingScreen = document.getElementById("loadingScreen");
+  loadingScreen.classList.add("zoomOut");
+
   setTimeout(() => {
     loadingScreen.style.display = "none";
-  }, 1300);
+  }, 1400);
 };
 
 showMenu.addEventListener("click", () => {
