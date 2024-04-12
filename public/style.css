@@ -327,8 +327,12 @@ li {
 .close:focus,
 .close:active {
   color: var(--base);
-  animation: fade 0.4s;
-  -webkit-animation: fade 0.4s;
-  touch-action: manipulation;
-  /* Add this line */
+  transition: fade 0.4s;
+  animation: fade 0.2s;
+  -webkit-animation: fade 0.2s;
+  /*Addthisline*/
+  -webkit-transition: fade 0.4s;
+  -moz-transition: fade 0.4s;
+  -ms-transition: fade 0.4s;
+  -o-transition: fade 0.4s;
 }
