@@ -6,11 +6,7 @@
   --text: #8a2a41;
   --accent: #dc143c
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 html {
   margin-top: 4%
@@ -25,19 +21,6 @@ body {
   color: var(--darkest)
 }
 
-.container {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 0;
-  margin: 0 5% 0 5%
-}
-
-.bg {
-  background-color: var(--lighter)
-}
-
 @media (min-width:768px) and (max-width:1024px) {
   .container {
     margin: 0 3% 0 3%
@@ -48,13 +31,6 @@ body {
   .container {
     margin: 0 1% 0 1%
   }
-}
-
-h1 {
-  font-size: 3rem;
-  text-align: center;
-  margin-top: 20px;
-  color: #26bb98
 }
 
 p {
@@ -68,25 +44,17 @@ p {
 }
 
 .nav-icon {
-  display: inline-flex;
   vertical-align: middle
 }
 
 .menu-block {
-  display: inline-flex;
-  opacity: 1;
-  vertical-align: middle;
-  visibility: visible
-}
-
-#menu-block {
-  display: inline-flex;
   opacity: 1;
   vertical-align: middle;
   visibility: visible
 }
 
 ul.navUL {
+  display: none;
   list-style: none;
   margin: 0;
   padding: 0
@@ -148,21 +116,12 @@ ul.navUL li a:hover {
   cursor: pointer
 }
 
-#menu-block {
-  display: none
-}
-
 .navUL {
   color: var(--darkest);
-  display: inline-flex
 }
 
 #nav-menu {
   transition: all 0.5s ease
-}
-
-#nav-menu.hide {
-  transform: translateX(-100%)
 }
 
 #loadingScreen {
@@ -179,107 +138,160 @@ ul.navUL li a:hover {
 }
 
 @media screen and (min-width:768px) {
-  #menu-block {
-    display: inline-flex
-  }
 
   #show-menu {
     display: none
   }
 }
 
-button.card {
-  padding: 10px;
-  display: inline-flex;
-  margin: 10px auto;
-  text-decoration: none;
-  border-radius: 15px;
-  background-color: var(--lighter);
-  color: var(--darkest);
-  width: -webkit-fill-available;
-  width: -moz-available;
-  width: fill-available;
-  text-align: center
-}
-
-.loading-animation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--lighter);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: pageLoadingAnimation 3s ease-in-out
-}
-
-@keyframes pageLoadingAnimation {
-  0% {
-    opacity: 1
-  }
-
-  50% {
-    opacity: .5
-  }
-
-  100% {
-    opacity: 1
-  }
-}
-
-@keyframes zoomOut {
-  0% {
-    transform: scale(1)
-  }
-
-  90% {
-    transform: scale(1.5)
-  }
-
-  100% {
-    transform: scale(1.6);
-    opacity: 0
-  }
-}
-
-.zoomOut {
-  animation: zoomOut 0.8s ease-out
-}
-
 #spinner {
   border: 16px solid #bb2649;
-  border-top: 16px solid #26bb98;
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  animation: spin 2s linear infinite
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  animation: spin 1.4s linear infinite;
+  text-align: center;
 }
 
 @keyframes spin {
   0% {
-    transform: rotate(0deg)
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    border: 16px solid #bb2649;
+    animation: fadeIn 0.4s transform 0.4s cubic-bezier(0.7, 0, 0.84, 0);
+  }
+
+  5% {
+    transform: translate3d(-50%, -50%, 0) rotate(18deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+  }
+
+  10% {
+    transform: translate3d(-50%, -50%, 0) rotate(36deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+  }
+
+  15% {
+    transform: translate3d(-50%, -50%, 0) rotate(54deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+  }
+
+  20% {
+    transform: translate3d(-50%, -50%, 0) rotate(72deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+  }
+
+  25% {
+    transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+  }
+
+  30% {
+    transform: translate3d(-50%, -50%, 0) rotate(108deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+  }
+
+  35% {
+    transform: translate3d(-50%, -50%, 0) rotate(126deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+  }
+
+  40% {
+    transform: translate3d(-50%, -50%, 0) rotate(144deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+  }
+
+  45% {
+    transform: translate3d(-50%, -50%, 0) rotate(162deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+  }
+
+  50% {
+    transform: translate3d(-50%, -50%, 0) rotate(180deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+  }
+
+  55% {
+    transform: translate3d(-50%, -50%, 0) rotate(198deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+  }
+
+  60% {
+    transform: translate3d(-50%, -50%, 0) rotate(216deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+  }
+
+  65% {
+    transform: translate3d(-50%, -50%, 0) rotate(234deg);
+    border: 16px solid #bb2649;
+    border-top: 16px solid #26bb98;
+    border-bottom: 16px solid #26bb98;
+
+  }
+
+  70% {
+    transform: translate3d(-50%, -50%, 0) rotate(252deg);
+    border: 16px solid #26bb98;
+
+  }
+
+  75% {
+    transform: translate3d(-50%, -50%, 0) rotate(270deg);
+    border: 16px solid #26bb98;
+  }
+
+  80% {
+    transform: translate3d(-50%, -50%, 0) rotate(288deg);
+
+  }
+
+  85% {
+    transform: translate3d(-50%, -50%, 0) rotate(306deg);
+  }
+
+  90% {
+    transform: translate3d(-50%, -50%, 0) rotate(324deg);
+
+  }
+
+  95% {
+    transform: translate3d(-50%, -50%, 0) rotate(342deg);
+
   }
 
   100% {
-    transform: rotate(360deg)
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    border: 16px solid #26bb98;
+    animation: fadeOut 0.4s ease-out;
   }
-}
-
-.fadeout {
-  animation: fadeOut 0.4s ease-out
 }
 
 .fadein {
-  animation: fadeIn 0.4s ease-in
+  animation: fadeIn 0.4s transform 0.4s cubic-bezier(0.7, 0, 0.84, 0)
 }
-.menu{
+
+.menu {
   width: 36px;
 }
-.introduction{
-    background-image: url("");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
