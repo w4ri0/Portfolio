@@ -1,3 +1,5 @@
+/* This JavaScript code snippet is responsible for creating a navigation menu functionality with a
+show/hide feature and a close button. Here is a breakdown of what the code does: */
 const navUL = document.querySelector(".navUL"),
   showMenu = document.querySelector(".show-menu"),
   closeButton = document.createElement("button");
