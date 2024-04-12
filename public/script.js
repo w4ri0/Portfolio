@@ -1,39 +1,35 @@
-/* This JavaScript code snippet is responsible for creating a navigation menu functionality with a
-show/hide feature and a close button. Here is a breakdown of what the code does: */
-const navUL = document.querySelector(".navUL"),
-  showMenu = document.querySelector(".show-menu"),
-  closeButton = document.createElement("button");
+const navUL = document.querySelector(".navUL");
+const showMenu = document.querySelector(".show-menu");
+const closeButton = document.createElement("button");
+
 window.onload = function () {
   setTimeout(() => {
     const loadingScreen = document.getElementById("loadingScreen");
     setTimeout(() => {
       loadingScreen.classList.add("zoomOut");
-    }, 400);
+      loadingScreen.style.display = "none";
+    }, 700);
   }, 400);
-  setTimeout(() => {
-    const loadingScreen = document.getElementById("loadingScreen");
-    loadingScreen.style.display = "none";
-  }, 1100);
 };
 
 showMenu.addEventListener("click", () => {
-  showMenu.style.display = "none"; // Hide the show-menu element
+  showMenu.style.display = "none";
   navUL.style.display = "block";
-  navUL.style.margin = "0 auto"; // Center the navUL element
-  navUL.style.background = "white"; // Add a background color to navUL
-  navUL.style.padding = "36%"; // Remove any existing padding
-  navUL.style.paddingBottom = "80%"; // Remove any existing padding-bottom
-  navUL.style.margin = "0"; // Remove any existing margin
-  navUL.style.width = "100%"; // Set the width to 100% to take the whole page
-  navUL.style.boxSizing = "border-box"; // I
-  // Create and append the modal closing button
-  const closeButton = document.createElement("button"); // Create the closing button element
+  navUL.style.margin = "0 auto";
+  navUL.style.background = "white";
+  navUL.style.padding = "36%";
+  navUL.style.paddingBottom = "80%";
+  navUL.style.margin = "0";
+  navUL.style.width = "100%";
+  navUL.style.boxSizing = "border-box";
+
   closeButton.innerText = "+";
-  closeButton.classList.add("close"); // Add the "close" class to the closing button
+  closeButton.classList.add("close");
   closeButton.style.position = "absolute";
   closeButton.style.top = "10px";
   closeButton.style.right = "10px";
-  navUL.appendChild(closeButton); // Append the closing button to the navUL element
+  navUL.appendChild(closeButton);
+
   closeButton.addEventListener("click", () => {
     navUL.style.display = "none";
     showMenu.style.display = "block";
