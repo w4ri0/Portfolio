@@ -1,7 +1,7 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
 const closeButton = document.createElement("button");
-
+const body= documen.querySelectorAll("body");
 window.onload = function () {
   const loadingScreen = document.getElementById("loadingScreen");
   const spinner = document.getElementById("spinner");
@@ -14,6 +14,7 @@ window.onload = function () {
 };
 
 showMenu.addEventListener("click", () => {
+  body.style.display="none"
   showMenu.style.display = "none";
   navUL.style.display = "block";
   navUL.style.margin = "0 auto";
