@@ -14,7 +14,6 @@ window.onload = function () {
 };
 
 showMenu.addEventListener("click", () => {
-  body.style.display="none";
   showMenu.style.display = "none";
   navUL.style.display = "block";
   navUL.style.margin = "0 auto";
