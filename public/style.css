@@ -160,6 +160,8 @@ li {
   left: 50%;
   right: 50%;
   text-align: center;
+  animation: spin 1.45s infinite linear;
+  -webkit-animation: spin;
 }
 
 @keyframes spin {

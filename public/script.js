@@ -4,7 +4,6 @@ const closeButton = document.createElement("button");
 window.onload = function () {
   const loadingScreen = document.getElementById("loadingScreen");
   const spinner = document.getElementById("spinner");
-
   spinner.classList.add("zoomOut");
   loadingScreen.classList.add("zoomOut");
   setTimeout(() => {
