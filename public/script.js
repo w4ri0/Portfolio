@@ -41,9 +41,11 @@ showMenu.addEventListener("click", () => {
   closeButton.classList.add("close");
 });
 closeButton.addEventListener("click", () => {
-  showMenu.classList.remove("show-menu-hidden");
-  navUL.classList.remove("navUL-modified");
-  closeButton.classList.remove("close-button-modified");
-  closeButton.innerText = "";
-  closeButton.classList.remove("close");
+  if (navUL.classList.contains("navUL-modified")) {
+    showMenu.classList.remove("show-menu-hidden");
+    navUL.classList.remove("navUL-modified");
+    closeButton.classList.remove("close-button-modified");
+    closeButton.innerText = "";
+    closeButton.classList.remove("close");
+  }
 });
