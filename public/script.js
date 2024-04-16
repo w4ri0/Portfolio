@@ -1,7 +1,7 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
 const closeButton = document.createElement(
-  "  button role='button' aria-label='bouton'"
+  "  button role='button' aria-label='button'"
 );
 
 window.onload = function () {
@@ -26,7 +26,7 @@ window.onload = function () {
         "button"
       );
       allText.forEach((text) => {
-        text.classList.add("fadein");
+        text.classList.add("fadeIn");
       });
     }, 450),
     setTimeout(() => {
