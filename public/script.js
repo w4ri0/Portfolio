@@ -1,6 +1,8 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
-const closeButton = document.createElement("button");
+const closeButton = document.createElement(
+  "button role='button' aria-label='bouton'"
+);
 
 window.onload = function () {
   setTimeout(() => {
