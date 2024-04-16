@@ -8,8 +8,20 @@
         "destination": "/devlopemmentWeb.html"
       },
       {
-        "source": "/Acceuil",
+        "source": "/Accueil",
         "destination": "/index.html"
+      },
+      {
+        "source": "/Blog",
+        "destination": "/blog.html"
+      },
+      {
+        "source": "/Contact",
+        "destination": "/contact.html"
+      },
+      {
+        "source": "/Projets",
+        "destination": "/projets.html"
       }
     ]
   }
