@@ -30,7 +30,6 @@ window.onload = function () {
       });
     }, 450),
     setTimeout(() => {
-      const loadingScreen = document.getElementById("loadingScreen");
       loadingScreen.style.display = "none";
     }, 1100);
 };
