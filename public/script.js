@@ -1,9 +1,11 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
 const closeButton = document.createElement("button");
+
 window.onload = function () {
   const loadingScreen = document.getElementById("loadingScreen");
   const spinner = document.getElementById("spinner");
+
   spinner.classList.add("zoomOut");
   loadingScreen.classList.add("zoomOut");
   setTimeout(() => {
@@ -27,7 +29,6 @@ showMenu.addEventListener("click", () => {
   closeButton.style.position = "absolute";
   closeButton.style.top = "10px";
   closeButton.style.right = "10px";
-
   navUL.appendChild(closeButton);
 
   closeButton.addEventListener("click", () => {
