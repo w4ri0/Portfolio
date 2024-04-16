@@ -80,6 +80,17 @@ ul li a:hover {
 
 li {
   margin: 2rem;
+  list-style: none;
+  border-bottom: #3e171c 2px solid;
+  border-left: #26bb98 2px solid;
+}
+
+@media (min-width:768px) {
+  li {
+    margin: 3.5rem;
+    list-style: none;
+  }
+
 }
 
 @keyframes fadeOut {
