@@ -6,34 +6,36 @@ const hideFooter = document.querySelector("footer");
 const closeContainer = document.querySelector(".close-container");
 
 window.onload = function () {
-  setTimeout(() => {
-    const loadingScreen = document.getElementById("loadingScreen");
-    setTimeout(() => {
-      loadingScreen.classList.add("zoomOut");
-    }, 400);
-  }, 400),
-    setTimeout(() => {
-      const allText = document.querySelectorAll(
-        "p",
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "a",
-        "span",
-        "li",
-        "button"
-      );
-      allText.forEach((text) => {
-        text.classList.add("fadein");
-      });
-    }, 750),
+  if (document.querySelector(".spinner")) {
     setTimeout(() => {
       const loadingScreen = document.getElementById("loadingScreen");
-      loadingScreen.style.display = "none";
-    }, 1100);
+      setTimeout(() => {
+        loadingScreen.classList.add("zoomOut");
+      }, 400);
+    }, 400),
+      setTimeout(() => {
+        const allText = document.querySelectorAll(
+          "p",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "a",
+          "span",
+          "li",
+          "button"
+        );
+        allText.forEach((text) => {
+          text.classList.add("fadein");
+        });
+      }, 750),
+      setTimeout(() => {
+        const loadingScreen = document.getElementById("loadingScreen");
+        loadingScreen.style.display = "none";
+      }, 1100);
+  }
 };
 
 showMenu.addEventListener("click", () => {
