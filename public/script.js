@@ -1,6 +1,8 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
 closeButton = document.createElement("button");
+hideMain = document.querySelector("main");
+hideFooter = document.querySelector("footer");
 
 window.onload = function () {
   setTimeout(() => {
@@ -42,6 +44,8 @@ showMenu.addEventListener("click", () => {
   closeButton.classList.add("close-button-modified");
   closeButton.innerText = "+";
   closeButton.classList.add("close");
+  hideMain.style.display = "none";
+  hideFooter.style.display = "none";
 });
 closeButton.addEventListener("click", () => {
   if (showMenu.classList.contains("show-menu-hidden")) {
@@ -53,5 +57,7 @@ closeButton.addEventListener("click", () => {
     closeButton.classList.remove("close-button-modified");
     closeButton.innerText = "";
     closeButton.classList.remove("close");
+    hideMain.style.display = "block";
+    hideFooter.style.display = "block";
   }
 });
