@@ -372,15 +372,15 @@ li {
 
 }
 
-li:hover {
+li:hover,
+li:focus li:active li:visited {
   background-color: var(--darkest);
   color: #f9ddde;
   animation: fadeIn 0.5s ease-in-out;
   -webkit-animation: fadeIn 0.5s ease-in-out;
   text-decoration: none;
-}
 
-li a:hover {
-  color: #f9ddde;
-  text-decoration: none;
+  a {
+    color: var(--lighter);
+  }
 }
