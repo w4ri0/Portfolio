@@ -80,6 +80,17 @@ li {
   border-left: #26bb98 2px solid;
 }
 
+li:hover,
+li:focus,
+li:active {
+  background-color: var(--darkest);
+  color: #f9ddde;
+  animation: fadeIn 0.5s ease-in-out;
+  -webkit-animation: fadeIn 0.5s ease-in-out;
+  text-decoration: none;
+  border-bottom: var(--secondary);
+}
+
 
 
 
