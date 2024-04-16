@@ -63,7 +63,8 @@ ul.navUL {
 }
 
 ul.navUL li {
-  padding: 0 3px
+  padding: 0 3px;
+  list-style: none;
 }
 
 ul li a {
@@ -143,12 +144,6 @@ li {
   z-index: 1000
 }
 
-@media screen and (min-width:768px) {
-
-  #show-menu {
-    display: none
-  }
-}
 
 #spinner {
   border: 16px solid #bb2649;
