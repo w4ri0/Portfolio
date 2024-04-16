@@ -85,23 +85,6 @@ li {
   border-left: #26bb98 2px solid;
 }
 
-@media (min-width:768px) {
-  .navUL-modified {
-    padding: 0% auto;
-  }
-
-  li {
-    margin: 3.5rem;
-    list-style: none;
-  }
-
-  li:hover {
-    background-color: var(--darkest);
-    color: #f9ddde;
-    animation: fadeIn 0.5s ease-in-out;
-    -webkit-animation: fadeIn 0.5s ease-in-out;
-  }
-}
 
 
 
@@ -380,4 +363,22 @@ li {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+@media (min-width:768px) {
+  .navUL-modified {
+    padding: 0% auto;
+  }
+
+  li {
+    margin: 3.5rem;
+    list-style: none;
+  }
+
+  li:hover {
+    background-color: var(--darkest);
+    color: #f9ddde;
+    animation: fadeIn 0.5s ease-in-out;
+    -webkit-animation: fadeIn 0.5s ease-in-out;
+  }
 }
