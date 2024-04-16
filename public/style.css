@@ -93,6 +93,12 @@ li {
   li {
     margin: 3.5rem;
     list-style: none;
+    transition: background-color 0.3s ease;
+  }
+
+  li:hover {
+    background-color: var(--darkest);
+    color: #f9ddde;
   }
 
 }
