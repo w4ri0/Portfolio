@@ -1,8 +1,9 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
-closeButton = document.createElement("button");
-hideMain = document.querySelector("main");
-hideFooter = document.querySelector("footer");
+const closeButton = document.createElement("button");
+const hideMain = document.querySelector("main");
+const hideFooter = document.querySelector("footer");
+const closeContainer = document.querySelector(".close-container");
 
 window.onload = function () {
   setTimeout(() => {
