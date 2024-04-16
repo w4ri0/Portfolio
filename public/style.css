@@ -88,7 +88,7 @@ li:active {
   animation: fadeIn 0.5s ease-in-out;
   -webkit-animation: fadeIn 0.5s ease-in-out;
   text-decoration: none;
-  border-bottom: var(--secondary);
+  border-bottom: var(--secondary) solid 2px;
 }
 
 
@@ -399,7 +399,7 @@ li:active {
     animation: fadeIn 0.5s ease-in-out;
     -webkit-animation: fadeIn 0.5s ease-in-out;
     text-decoration: none;
-    border-bottom: var(--secondary);
+    border-bottom: var(--secondary) solid 2px;
 
     a {
       color: var(--lighter);
