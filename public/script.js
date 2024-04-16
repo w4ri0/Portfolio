@@ -28,7 +28,7 @@ window.onload = function () {
       allText.forEach((text) => {
         text.classList.add("fadein");
       });
-    }, 750),
+    }, 450),
     setTimeout(() => {
       const loadingScreen = document.getElementById("loadingScreen");
       loadingScreen.style.display = "none";
