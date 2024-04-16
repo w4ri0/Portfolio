@@ -43,7 +43,7 @@ showMenu.addEventListener("click", () => {
   navUL.style.margin = "0";
   navUL.style.width = "100%";
   navUL.style.boxSizing = "border-box";
-
+  navUL.appendChild(closeButton);
   closeButton.innerText = "+";
   closeButton.classList.add("close");
   closeButton.style.position = "absolute";
@@ -53,5 +53,4 @@ showMenu.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
   navUL.style.display = "none";
   showMenu.style.display = "block";
-  navUL.appendChild(closeButton);
 });
