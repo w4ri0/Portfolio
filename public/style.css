@@ -73,11 +73,6 @@ ul li a {
   text-decoration: none
 }
 
-ul li a:hover {
-  color: var(--secondary);
-  text-decoration: none
-}
-
 li {
   margin: 2rem;
   list-style: none;
@@ -375,10 +370,12 @@ li {
     list-style: none;
   }
 
-  li:hover {
-    background-color: var(--darkest);
-    color: #f9ddde;
-    animation: fadeIn 0.5s ease-in-out;
-    -webkit-animation: fadeIn 0.5s ease-in-out;
-  }
+}
+
+li:hover {
+  background-color: var(--darkest);
+  color: #f9ddde;
+  animation: fadeIn 0.5s ease-in-out;
+  -webkit-animation: fadeIn 0.5s ease-in-out;
+  text-decoration: none;
 }
