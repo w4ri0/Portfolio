@@ -66,13 +66,13 @@ ul.navUL li {
   padding: 0 3px
 }
 
-ul.navUL li a {
+ul li a {
   color: var(--darkest);
   padding: 3px;
   text-decoration: none
 }
 
-ul.navUL li a:hover {
+ul li a:hover {
   color: var(--secondary);
   text-decoration: none
 }
