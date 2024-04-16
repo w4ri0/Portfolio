@@ -1,0 +1,8 @@
+.blog-container {
+    width: 80%
+}
+
+.blog-image {
+    max-width: 70%;
+    height: auto;
+}
