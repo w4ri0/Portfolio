@@ -10,25 +10,26 @@ window.onload = function () {
     setTimeout(() => {
       loadingScreen.classList.add("zoomOut");
     }, 400);
-  }, 400),
-    setTimeout(() => {
-      const allText = document.querySelectorAll(
-        "p",
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "a",
-        "span",
-        "li",
-        "button"
-      );
-      allText.forEach((text) => {
-        text.classList.add("fadeIn");
-      });
-    }, 450);
+  }, 400);
+
+  setTimeout(() => {
+    const allText = document.querySelectorAll([
+      "p",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "a",
+      "span",
+      "li",
+      "button",
+    ]);
+    allText.forEach((text) => {
+      text.classList.add("fadeIn");
+    });
+  }, 450);
 };
 setTimeout(() => {
   const loadingScreen = document.getElementById("loadingScreen");
