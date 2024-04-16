@@ -37,7 +37,6 @@ showMenu.addEventListener("click", () => {
   navUL.appendChild(closeButton);
   closeButton.classList.remove("close-button");
   showMenu.classList.add("show-menu-hidden");
-  navUL.classList.add("navUL-modified");
   closeButton.classList.add("close-button-modified");
   closeButton.innerText = "+";
   closeButton.classList.add("close");
