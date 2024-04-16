@@ -264,7 +264,7 @@ li {
   }
 }
 
-.fadein {
+.fadeIn {
   animation: fadeIn 0.4s transform 0.4s cubic-bezier(0.7, 0, 0.84, 0)
 }
 
