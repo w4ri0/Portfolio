@@ -8,7 +8,7 @@ window.onload = function () {
   setTimeout(() => {
     const loadingScreen = document.getElementById("loadingScreen");
     setTimeout(() => {
-      loadingScreen.classList.add("zoomOut");
+      loadingScreen.classList.add(".zoomOut");
     }, 400);
   }, 400);
 
@@ -34,8 +34,6 @@ window.onload = function () {
 setTimeout(() => {
   const loadingScreen = document.getElementById("loadingScreen");
   loadingScreen.style.display = "none";
-  loadingScreen.style.opacity = "0";
-  loadingScreen.style.transition = "all 0.5s ease-in-out";
 }, 1100);
 showMenu.addEventListener("click", () => {
   showMenu.style.display = "none";
