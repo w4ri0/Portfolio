@@ -4,7 +4,6 @@ const closeButton = document.createElement("button");
 const hideMain = document.querySelector("main");
 const hideFooter = document.querySelector("footer");
 const closeContainer = document.querySelector(".close-container");
-
 window.onload = function () {
   if (document.querySelector(".spinner")) {
     setTimeout(() => {
@@ -37,7 +36,6 @@ window.onload = function () {
     loadingScreen.style.display = "none";
   }, 1100);
 };
-
 showMenu.addEventListener("click", () => {
   closeContainer.appendChild(closeButton);
   navUL.classList.remove("navUL");
