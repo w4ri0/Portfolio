@@ -36,7 +36,6 @@ window.onload = function () {
 showMenu.addEventListener("click", () => {
   navUL.appendChild(closeButton);
   navUL.classList.remove("navUL");
-  navUL.appendChild(navUL.classList.add("navUL"));
   closeButton.classList.remove("close-button");
   showMenu.classList.add("show-menu-hidden");
   navUL.classList.add("navUL-modified");
