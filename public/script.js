@@ -34,6 +34,7 @@ window.onload = function () {
 };
 
 showMenu.addEventListener("click", () => {
+  navUL.appendChild(closeButton);
   navUL.classList.remove("navUL");
   closeButton.classList.remove("close-button");
   showMenu.classList.add("show-menu-hidden");
@@ -44,6 +45,7 @@ showMenu.addEventListener("click", () => {
 });
 closeButton.addEventListener("click", () => {
   if (showMenu.classList.contains("show-menu-hidden")) {
+    navUL.removeChild(closeButton);
     navUL.classList.add("navUL");
     closeButton.classList.add("close-button");
     showMenu.classList.remove("show-menu-hidden");
