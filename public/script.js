@@ -1,7 +1,7 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
 const closeButton = document.createElement(
-  "button role='button' aria-label='bouton'"
+  "  button role='button' aria-label='bouton'"
 );
 
 window.onload = function () {
@@ -45,14 +45,17 @@ showMenu.addEventListener("click", () => {
   navUL.style.margin = "0";
   navUL.style.width = "100%";
   navUL.style.boxSizing = "border-box";
-  navUL.appendChild(closeButton);
+
   closeButton.innerText = "+";
   closeButton.classList.add("close");
   closeButton.style.position = "absolute";
   closeButton.style.top = "10px";
   closeButton.style.right = "10px";
-});
-closeButton.addEventListener("click", () => {
-  navUL.style.display = "none";
-  showMenu.style.display = "block";
+  navUL.appendChild(closeButton);
+
+  closeButton.addEventListener("click", () => {
+    navUL.style.display = "none";
+    showMenu.style.display = "block";
+    navUL.appendChild(closeButton);
+  });
 });
