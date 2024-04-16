@@ -80,19 +80,10 @@ li {
   border-left: #26bb98 2px solid;
 }
 
-li:hover,
-li:focus,
-li:active {
-  background-color: var(--darkest);
-  color: #f9ddde;
-  animation: fadeIn 0.5s ease-in-out;
-  -webkit-animation: fadeIn 0.5s ease-in-out;
-  text-decoration: none;
-  border-bottom: var(--secondary) solid 2px;
+a {
+  color: var(--darkest);
+  text-decoration: none
 }
-
-
-
 
 @keyframes fadeOut {
   0% {
@@ -394,12 +385,13 @@ li:active {
 .li-container:hover,
 .li-container:focus .li-container:active .li-container:visited {
   li {
-    background-color: var(--darkest);
-    color: #f9ddde;
+    background-color: var(--lighter);
+    color: var(--darkest);
     animation: fadeIn 0.5s ease-in-out;
     -webkit-animation: fadeIn 0.5s ease-in-out;
     text-decoration: none;
-    border-bottom: var(--secondary) solid 2px;
+    border-bottom: var(--secondary) solid 1px;
+    border-left: var(--accent) solid 1px;
 
     a {
       color: var(--lighter);
