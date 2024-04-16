@@ -28,12 +28,14 @@ window.onload = function () {
       allText.forEach((text) => {
         text.classList.add("fadeIn");
       });
-    }, 450),
-    setTimeout(() => {
-      loadingScreen.style.display = "none";
-    }, 1100);
+    }, 450);
 };
-
+setTimeout(() => {
+  const loadingScreen = document.getElementById("loadingScreen");
+  loadingScreen.style.display = "none";
+  loadingScreen.style.opacity = "0";
+  loadingScreen.style.transition = "all 0.5s ease-in-out";
+}, 1100);
 showMenu.addEventListener("click", () => {
   showMenu.style.display = "none";
   navUL.style.display = "block";
