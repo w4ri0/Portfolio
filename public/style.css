@@ -383,7 +383,7 @@ li:active {
 
 }
 
-.li-container:before {
+.li-container::before {
   position: absolute;
   top: -20%;
   left: -20%;
