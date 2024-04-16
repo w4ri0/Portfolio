@@ -30,12 +30,12 @@ window.onload = function () {
         allText.forEach((text) => {
           text.classList.add("fadein");
         });
-      }, 750),
-      setTimeout(() => {
-        const loadingScreen = document.getElementById("loadingScreen");
-        loadingScreen.style.display = "none";
-      }, 1100);
+      }, 750);
   }
+  setTimeout(() => {
+    const loadingScreen = document.getElementById("loadingScreen");
+    loadingScreen.style.display = "none";
+  }, 1100);
 };
 
 showMenu.addEventListener("click", () => {
