@@ -159,9 +159,9 @@ li {
   top: 50%;
   left: 50%;
   right: 50%;
+  animation: spin 1.5s linear infinite;
   text-align: center;
-  animation: spin 1.45s infinite linear;
-  -webkit-animation: spin;
+  -webkit-animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
@@ -253,7 +253,6 @@ li {
     border: 16px solid #26bb98;
     animation: zoomOut 0.4s ease-out;
     -webkit-animation: zoomIn 0.4s ease-out;
-    background: none
   }
 
 
@@ -261,7 +260,7 @@ li {
   100% {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
     border: 16px solid #26bb98;
-    display: none;
+
   }
 }
 
@@ -309,7 +308,6 @@ li {
     -moz-transform: scale(1.6);
     -ms-transform: scale(1.6);
     -o-transform: scale(1.6);
-    background: none;
   }
 
   95% {
@@ -318,6 +316,7 @@ li {
     -moz-transform: scale(0.1);
     -ms-transform: scale(0.1);
     -o-transform: scale(0.1);
+    background: none;
   }
 
   100% {
@@ -343,6 +342,6 @@ li {
 }
 
 .zoomOut {
-  animation: zoomOut spin 1.45s;
-  -webkit-animation: zoomOut spin 1.45s;
+  animation: zoomOut 1.45s;
+  -webkit-animation: zoomOut 1.45s;
 }
