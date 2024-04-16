@@ -86,6 +86,10 @@ li {
 }
 
 @media (min-width:768px) {
+  .navUL-modified {
+    padding: 0% auto;
+  }
+
   li {
     margin: 3.5rem;
     list-style: none;
