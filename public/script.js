@@ -1,7 +1,7 @@
 const navUL = document.querySelector(".navUL");
 const showMenu = document.querySelector(".show-menu");
 const closeButton = document.createElement("button");
-const body= documen.querySelectorAll("body");
+const body= document.querySelectorAll("body");
 window.onload = function () {
   const loadingScreen = document.getElementById("loadingScreen");
   const spinner = document.getElementById("spinner");
@@ -11,9 +11,11 @@ window.onload = function () {
   setTimeout(() => {
     loadingScreen.style.display = "none";
   }, 1400);
+  
 };
 
 showMenu.addEventListener("click", () => {
+  
   showMenu.style.display = "none";
   navUL.style.display = "block";
   navUL.style.margin = "0 auto";
@@ -29,6 +31,7 @@ showMenu.addEventListener("click", () => {
   closeButton.style.position = "absolute";
   closeButton.style.top = "10px";
   closeButton.style.right = "10px";
+  
   navUL.appendChild(closeButton);
 
   closeButton.addEventListener("click", () => {
