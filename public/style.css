@@ -345,3 +345,23 @@ li {
   animation: zoomOut 1.45s;
   -webkit-animation: zoomOut 1.45s;
 }
+
+.show-menu-hidden {
+  display: none;
+}
+
+.navUL-modified {
+  display: block;
+  margin: 0 auto;
+  background: white;
+  padding: 36%;
+  padding-bottom: 80%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.close-button-modified {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
