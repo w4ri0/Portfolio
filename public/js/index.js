@@ -1,5 +1,3 @@
-const e = require("express");
-
 var firebaseConfig = {
     apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
 
@@ -22,32 +20,71 @@ var firebaseConfig = {
 
   const analytics = getAnalytics(app);
    
-  const db = firebase.database();
-    
-  const username = prompt("Please Tell Us Your Name");
-  function sendMessage(){
-    e.preventDefault();
-    //get values to be submited
-    const timestanp = Date.now();
-    const messageInput = document.getElementById("messageInput");
-    const message = messageInput.value;
-    //clear input
-    messageInput.value = "";
-    //autoscroll to bottom
-    document.getElementById("messages").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-    //create db collection and send in the data
-    db.ref("messages/" + timestanp).set({
-      username: username,
-      message: message
-    });
+  firebase.initializeApp(firebaseConfig);
+
+
+const db = firebase.database();
+
+
+const username = prompt("Please Tell Us Your Name");
+
+
+function sendMessage(e) {
+
+  e.preventDefault();
+
+
+  // get values to be submitted
+
+  const timestamp = Date.now();
+
+  const messageInput = document.getElementById("message-input");
+
+  const message = messageInput.value;
+
+
+  // clear the input box
+
+  messageInput.value = "";
+
+
+  //auto scroll to bottom
+
+  document
+
+    .getElementById("messages")
+
+    .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+
+
+  // create db collection and send in the data
+
+  db.ref("messages/" + timestamp).set({
+
+    username,
+
+    message,
+
+  });
+
 }
+
+
 const fetchChat = db.ref("messages/");
-fetchChat.on("child_added", function(snapshot){
+
+
+fetchChat.on("child_added", function (snapshot) {
+
   const messages = snapshot.val();
+
   const message = `<li class=${
 
     username === messages.username ? "sent" : "receive"
 
   }><span>${messages.username}: </span>${messages.message}</li>`;
-    document.getElementById("messages").innerHTML += message;
+
+  // append the message on the page
+
+  document.getElementById("messages").innerHTML += message;
+
 });
