@@ -1,24 +1,28 @@
+
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
 var firebaseConfig = {
-    apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
+  apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
 
-    authDomain: "togoban.firebaseapp.com",
-  
-    databaseURL: "https://togoban-default-rtdb.europe-west1.firebasedatabase.app",
-  
-    projectId: "togoban",
-  
-    storageBucket: "togoban.appspot.com",
-  
-    messagingSenderId: "607349651499",
-  
-    appId: "1:607349651499:web:691fca00a6aca0df75526e",
-  
-    measurementId: "G-7BKJW3RTS1"
-  
-  };
-  const app = initializeApp(firebaseConfig);
+  authDomain: "togoban.firebaseapp.com",
 
-  const analytics = getAnalytics(app);
+  databaseURL: "https://togoban-default-rtdb.europe-west1.firebasedatabase.app",
+
+  projectId: "togoban",
+
+  storageBucket: "togoban.appspot.com",
+
+  messagingSenderId: "607349651499",
+
+  appId: "1:607349651499:web:691fca00a6aca0df75526e",
+
+  measurementId: "G-7BKJW3RTS1"
+
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
    
   firebase.initializeApp(firebaseConfig);
 
