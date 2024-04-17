@@ -29,16 +29,13 @@ function sendMessage(e) {
   const messageInput = document.getElementById("message-input");
   const message = messageInput.value;
   messageInput.value = "";
-  document
-    .getElementById("messages")
-    .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
   db.ref("messages/" + timestamp).set({
-    username,
-    message,
+    usr: username,
+    msg: message,
   });
 }
-
 const fetchChat = db.ref("messages/");
+
 
 fetchChat.on("child_added", function (snapshot) {
   const messages = snapshot.val();
