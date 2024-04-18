@@ -109,9 +109,10 @@
         }
 
         // TO SEND MESSAGES
-        module.sendMsg = function sendMsg(conversationId) {
+        module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
             if (msg != '') {
+                var conversationId = generateConversationId(); // Generate a random conversationId
                 set(ref(db, "conversations/" + conversationId + "/messages"), {
                     user: user,
                     msg: msg
@@ -119,6 +120,20 @@
                 msgTxt.value = '';
             }
         }
+
+        function generateConversationId() {
+
+            const conversationId = Math.floor(Math.random() * 1000000);
+            return conversationId.toString();
+        }
+
+        // To retrieve and show conversations
+        onChildAdded(ref(db, "conversations"), (data) => {
+            var conversationId = data.key;
+            var conversationElement = document.createElement('div');
+            conversationElement.textContent = "Conversation ID: " + conversationId;
+            messages.appendChild(conversationElement);
+        });
 
         // TO CONNECT USER
         document.getElementById('register-form').addEventListener('submit', function(event) {
