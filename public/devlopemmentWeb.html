@@ -164,8 +164,7 @@
                 msgTxt.value = '';
             }
         }
-        window.module = window.module || {};
-        window.module.sendMsg = sendMsg;
+
 
         // To retrieve and show conversations
         onChildAdded(ref(db, "chats"), (data) => {
