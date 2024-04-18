@@ -7,9 +7,8 @@
     <title>Gabriel Dagon | Opérateur Numérique (Digital Operator)</title>
     <link rel="stylesheet" href="css/style.css">
     <meta name="description"
-        content="Gabriel DAGON est un Opérateur numérique chez digitanie.Ce site web montre ses réalisations et permet de le contacter">
+        content="Gabriel DAGON est un Opérateiur numérique chez digitanie.Ce site web montre ses réalisations et permet de le contacter">
     <link rel="stylesheet" href="css/style.css">
-    
 </head>
 
 <body>
@@ -78,19 +77,6 @@
         // variables
         var msgTxt = document.getElementById('msgTxt');
         var user;
-        var uid;
-        signInAnonymously(auth)
-            .then((userCredential) => {
-                // Signed in anonymously
-                const user = userCredential.user;
-                console.log("Authenticated anonymously with user ID: ", user.uid);
-                module.storeUUID(user.uid); // Store the uid in the /users collection
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error("Authentication error: ", errorCode, errorMessage);
-            });
         if (sessionStorage.getItem('user')) {
             user = sessionStorage.getItem('user');
         } else {
@@ -104,7 +90,7 @@
             set(ref(db, "messages/" + timestamp), {
                 msg: msg,
                 user: user,
-                uid: uid
+              
             })
 
             msgTxt.value = "";
@@ -114,10 +100,9 @@
                 uuid: uid // Store the uid in the /users collection
             });
         }
-
         // TO RECEIVE MSG
         onChildAdded(ref(db, "messages"), (data) => {
-            if (data.val().uid == uid) {
+            if (data.val().user == user) {
                 messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg (" + data.key + ")>DELETE</button></div></div>";
             } else {
                 messages.innerHTML += "<div class=outer id=" + data.key + "><div id=inner class=notMe>" + data.val().user + " : " + data.val().msg + "</div></div>";
@@ -135,7 +120,24 @@
             messages.removeChild(msgBox);
         })
 
-        
+        // TO STORE UUID
+        module.storeUUID = function storeUUID(uid) {
+            set(ref(db, "users/" + user), {
+                uuid: user.uid
+            });
+        }
+        // AUTHENTICATION
+        signInAnonymously(auth)
+            .then((userCredential) => {
+                // Signed in anonymously
+                const user = userCredential.user;
+                console.log("Authenticated anonymously with user ID: ", user.uid);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Authentication error: ", errorCode, errorMessage);
+            });
             </script>
     </body>
 
