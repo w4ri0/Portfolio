@@ -120,8 +120,8 @@
     signInAnonymously(auth)
          .then(() => {
             // Signed in anonymously
-            const anonUser = userCredential.anonUser;
-            console.log("Authenticated anonymously with user ID: ", anonUser.uid);
+            const user = userCredential.user;
+            console.log("Authenticated anonymously with user ID: ", user.uid);
             })
             .catch((error) => {
             const errorCode = error.code;
