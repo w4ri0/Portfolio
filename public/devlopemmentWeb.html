@@ -123,34 +123,21 @@
         })
 
         // TO STORE UUID
-        module.storeUUID = function storeUUID(uid) {
-            set(ref(db, "users/" + user), {
-                uuid: user.uid
-            });
-        }
-        // AUTHENTICATION
-        <script>
         signInAnonymously(auth)
             .then((userCredential) => {
                 // Signed in anonymously
                 const user = userCredential.user;
-                const uid = user.uid;
+                uid = user.uid;
                 console.log("Authenticated anonymously with user ID: ", user.uid);
-
-                const userMessagesRef = ref(db).child('messages').orderByChild('uid').equalTo(uid);
-
-                onValue(userMessagesRef, (snapshot) => {
-                    const data = snapshot.val();
-                    // data contient maintenant tous les messages de l'utilisateur connecté
-                    console.log(data);
-                });
+                module.storeUUID(uid);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error("Authentication error: ", errorCode, errorMessage);
             });
-        </script>
+        // AUTHENTICATION
+        // signInAnonymously(auth)
             </script>
             <script src="js/script.js"></script>
     </body>
