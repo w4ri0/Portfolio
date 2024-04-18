@@ -141,6 +141,14 @@
                 const errorMessage = error.message;
                 console.error("Authentication error: ", errorCode, errorMessage);
             });
+
+            const userMessagesRef = ref(db, 'messages/').orderByChild('uid').equalTo(uid);
+
+onValue(userMessagesRef, (snapshot) => {
+  const data = snapshot.val();
+  // data contient maintenant tous les messages de l'utilisateur connecté
+  console.log(data);
+});
             </script>
     </body>
 
