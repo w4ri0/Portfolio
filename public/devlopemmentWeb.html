@@ -116,17 +116,16 @@
         })
 
         // AUTHENTICATION
-
-    signInAnonymously(auth)
-         .then(() => {
-            // Signed in anonymously
-            const user = userCredential.user;
-            console.log("Authenticated anonymously with user ID: ", user.uid);
+        signInAnonymously(auth)
+            .then((userCredential) => {
+                // Signed in anonymously
+                const user = userCredential.user;
+                console.log("Authenticated anonymously with user ID: ", user.uid);
             })
             .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error("Authentication error: ", errorCode, errorMessage);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Authentication error: ", errorCode, errorMessage);
             });
             </script>
     </body>
