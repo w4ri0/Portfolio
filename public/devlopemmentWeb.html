@@ -59,8 +59,8 @@
     <script>
         module = {};
         module.promptUsername = function promptUsername() {
-            sender = prompt('PLEASE ENTER YOUR NAME');
-            sessionStorage.setItem('sender', sender);
+            user = prompt('PLEASE ENTER YOUR NAME');
+            sessionStorage.setItem('user', user);
         }
     </script>
     <script src="js/firebaseConfig.js"></script>
@@ -76,9 +76,9 @@
 
         // variables
         var msgTxt = document.getElementById('msgTxt');
-        var sender;
-        if (sessionStorage.getItem('sender')) {
-            sender = sessionStorage.getItem('sender');
+        var user;
+        if (sessionStorage.getItem('user')) {
+            user = sessionStorage.getItem('user');
         } else {
             module.promptUsername();
         }
@@ -89,7 +89,7 @@
             var timestamp = new Date().getTime();
             set(ref(db, "messages/" + timestamp), {
                 msg: msg,
-                sender: sender
+                user: user
             })
 
             msgTxt.value = "";
@@ -97,10 +97,10 @@
 
         // TO RECEIVE MSG
         onChildAdded(ref(db, "messages"), (data) => {
-            if (data.val().sender == sender) {
+            if (data.val().user == user) {
                 messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg (" + data.key + ")>DELETE</button></div></div>";
             } else {
-                messages.innerHTML += "<div class=outer id=" + data.key + "><div id=inner class=notMe>" + data.val().sender + " : " + data.val().msg + "</div></div>";
+                messages.innerHTML += "<div class=outer id=" + data.key + "><div id=inner class=notMe>" + data.val().user + " : " + data.val().msg + "</div></div>";
             }
         });
 
@@ -118,16 +118,16 @@
         // AUTHENTICATION
         signInAnonymously(auth)
             .then((userCredential) => {
-                // Signed in anonymously
-                const user = userCredential.user;
-                console.log("Authenticated anonymously with user ID: ", user.uid);
+            // Signed in anonymously
+            const anonUser = userCredential.anonUser;
+            console.log("Authenticated anonymously with user ID: ", anonUser.uid);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error("Authentication error: ", errorCode, errorMessage);
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Authentication error: ", errorCode, errorMessage);
             });
-    </script>    
+            </script>
     </body>
 
 
