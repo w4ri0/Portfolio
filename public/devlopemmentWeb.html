@@ -64,7 +64,10 @@
         <input type="password" id="register-password" required>
         <button type="submit">S'inscrire</button>
     </form>
+    <label for="conversationId">Conversation ID:</label>
+    <input type="text" id="conversationId" name="conversationId">
     <div id="connected-user"></div>
+
     <div id="messages"></div>
 
     <div id="sendMsg">
@@ -151,13 +154,9 @@
         // TO SEND MESSAGES
         module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
-            if (msg != '') {
-                function generateMessageId() {
-                    const messageId = Math.floor(Math.random() * 1000000);
-                    return messageId.toString();
-                }
+            var conversationId = document.getElementById('conversationId').value;
+            if (msg != '' && conversationId != '') {
                 var messageId = generateMessageId(); // Generate a random messageId
-                var conversationId = "YOUR_CONVERSATION_ID"; // Replace with your desired conversationId
                 set(ref(db, "chats/" + conversationId + "/messages/" + messageId), {
                     user: user.uid,
                     msg: msg
