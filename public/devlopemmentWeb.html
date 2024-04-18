@@ -194,7 +194,7 @@
             var msg = msgTxt.value;
             if (msg != '') {
                 var messageId = generateMessageId(); // Generate a random messageId
-                set(ref(db, "chats/" + chatRoomId + "/messages/" + messageId), {
+                set(ref(db, "chats/" + "/messages/" + messageId), {
                     user: user,
                     msg: msg
                 });
