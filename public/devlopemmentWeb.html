@@ -90,10 +90,14 @@
             set(ref(db, "messages/" + timestamp), {
                 msg: msg,
                 user: user,
-                uid:user.uid
-            })
+                          })
 
             msgTxt.value = "";
+        }
+        module.storeUUID = function storeUUID(uid) {
+            set(ref(db, "users/" + user), {
+                uuid: user.uid
+            });
         }
 
         // TO RECEIVE MSG
@@ -117,11 +121,7 @@
         })
 
         // TO STORE UUID
-        module.storeUUID = function storeUUID(uid) {
-            set(ref(db, "users/" + user), {
-                uuid: user.uid
-            });
-        }
+      
         // AUTHENTICATION
         signInAnonymously(auth)
             .then((userCredential) => {
