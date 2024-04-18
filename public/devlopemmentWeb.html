@@ -188,6 +188,23 @@
             userElement.textContent = "User ID: " + userId;
             messages.appendChild(userElement);
         });
+        // To send messages for a specific chat room
+        module.sendMsg = function sendMsg(chatRoomId) {
+            var msg = msgTxt.value;
+            if (msg != '') {
+                var messageId = generateMessageId(); // Generate a random messageId
+                set(ref(db, "chats/" + chatRoomId + "/messages/" + messageId), {
+                    user: user,
+                    msg: msg
+                });
+                msgTxt.value = '';
+            }
+        }
+
+        function generateMessageId() {
+            const messageId = Math.floor(Math.random() * 1000000);
+            return messageId.toString();
+        }
 
         // TO RECEIVE MSG
         onChildAdded(ref(db, "chats/*/messages"), (data) => {
