@@ -62,7 +62,7 @@
         <input type="password" id="register-password" required>
         <button type="submit">S'inscrire</button>
     </form>
-
+    <div id="connected-user"></div>
     <div id="messages"></div>
 
     <div id="sendMsg">
@@ -90,7 +90,57 @@
         var user;
         module = {};
 
+        //To register the user 
+        document.getElementById('register-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var email = document.getElementById('register-email').value;
+            var password = document.getElementById('register-password').value;
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    user = userCredential.user;
+                    document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
+                });
+        });
+        // To authenticate the user
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var email = document.getElementById('login-email').value;
+            var password = document.getElementById('login-password').value;
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    user = userCredential.user;
+                    document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
+                });
+        });
+
+        // To sign out the user
+        document.getElementById('logout-btn').addEventListener('click', function () {
+            signOut(auth)
+                .then(() => {
+                    // Sign-out successful
+                    user = null;
+                    document.getElementById('connected-user').textContent = "Connected User: None";
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
+                });
+        });
         // TO SEND MESSAGES
+
         module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
             if (msg != '') {
