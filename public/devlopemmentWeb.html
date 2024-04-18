@@ -68,7 +68,7 @@
     <div id="sendMsg">
         <input type="text" id="msgTxt" placeholder="ENTER YOUR MSG...">
         <input type="submit" id="msgBtn" value="send" onclick="module.sendMsg()">
-       
+
     </div>
 
     <script src="js/script.js">
@@ -80,23 +80,22 @@
         import { initializeApp } from "js/firebaseConfig.js";
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-        
-        
+
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const auth = getAuth(app);
-        
+
         // variables
         var msgTxt = document.getElementById('msgTxt');
         var user;
-        module={};
+        module = {};
 
         // TO SEND MESSAGES
         module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
             if (msg != '') {
                 var conversationId = generateConversationId(); // Generate a random conversationId
-                set(ref(db, "conversations/" + conversationId + "/messages"), {
+                set(ref(db, "chats/" + conversationId + "/messages"), {
                     user: user,
                     msg: msg
                 });
@@ -105,38 +104,36 @@
         }
 
         function generateConversationId() {
-
             const conversationId = Math.floor(Math.random() * 1000000);
             return conversationId.toString();
         }
 
         // To retrieve and show conversations
-        onChildAdded(ref(db, "conversations"), (data) => {
+        onChildAdded(ref(db, "chats"), (data) => {
             var conversationId = data.key;
             var conversationElement = document.createElement('div');
             conversationElement.textContent = "Conversation ID: " + conversationId;
             messages.appendChild(conversationElement);
         });
 
-        // TO CONNECT USER
-        document.getElementById('register-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var email = document.getElementById('register-email').value;
-            var password = document.getElementById('register-password').value;
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // User created successfully
-                    const user = userCredential.user;
-                    sessionStorage.setItem('user', user.email);
-                    alert("User created successfully with email: " + user.email);
-                })
-                .catch((error) => {
-                    alert("Error creating user: " + error.message);
-                });
+        // To retrieve and show messages for a specific chat room
+        onChildAdded(ref(db, "chats/chat-room-1/messages"), (data) => {
+            var messageId = data.key;
+            var messageElement = document.createElement('div');
+            messageElement.textContent = "Message ID: " + messageId;
+            messages.appendChild(messageElement);
+        });
+
+        // To retrieve and show user information
+        onChildAdded(ref(db, "users"), (data) => {
+            var userId = data.key;
+            var userElement = document.createElement('div');
+            userElement.textContent = "User ID: " + userId;
+            messages.appendChild(userElement);
         });
 
         // TO RECEIVE MSG
-        onChildAdded(ref(db, "conversations/messages"), (data) => {
+        onChildAdded(ref(db, "chats/*/messages"), (data) => {
             var messageElement = document.createElement('div');
             var textElement = document.createElement('div');
             var buttonElement = document.createElement('button');
@@ -167,15 +164,15 @@
         // TO DELETE MSG
         module.dltMsg = function dltMsg(key) {
             const user = getAuth().currentUser;
-            if (uid === user.uid) {
-                remove(ref(db, "messages/" + key));
+            if (user) {
+                remove(ref(db, "chats/*/messages/" + key));
             } else {
                 console.log("User not authenticated.");
             }
         }
 
         // WHEN MSG IS DELETED
-        onChildRemoved(ref(db, "messages"), (data) => {
+        onChildRemoved(ref(db, "chats/*/messages"), (data) => {
             var msgBox = document.getElementById(data.key);
             messages.removeChild(msgBox);
         })
