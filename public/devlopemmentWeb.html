@@ -114,7 +114,7 @@
         // TO DELETE MSG
         module.dltMsg = function dltMsg(key) {
             const user = getAuth().currentUser;
-            if (user && user.uid === uid) {
+            if (uid === user.uid) {
                 remove(ref(db, "messages/" + key));
             } else {
                 console.log("User not authenticated.");
