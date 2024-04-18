@@ -78,6 +78,18 @@
         // variables
         var msgTxt = document.getElementById('msgTxt');
         var user;
+        signInAnonymously(auth)
+            .then((userCredential) => {
+                // Signed in anonymously
+                const user = userCredential.user;
+                console.log("Authenticated anonymously with user ID: ", user.uid);
+                module.storeUUID(user.uid); // Store the uid in the /users collection
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Authentication error: ", errorCode, errorMessage);
+            });
         if (sessionStorage.getItem('user')) {
             user = sessionStorage.getItem('user');
         } else {
@@ -98,7 +110,7 @@
         }
         module.storeUUID = function storeUUID(uid) {
             set(ref(db, "users/" + user), {
-                uuid: user.uid
+                uuid: uid // Store the uid in the /users collection
             });
         }
 
@@ -125,17 +137,7 @@
         // TO STORE UUID
       
         // AUTHENTICATION
-        signInAnonymously(auth)
-            .then((userCredential) => {
-                // Signed in anonymously
-                const user = userCredential.user;
-                console.log("Authenticated anonymously with user ID: ", user.uid);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error("Authentication error: ", errorCode, errorMessage);
-            });
+        
             </script>
     </body>
 
