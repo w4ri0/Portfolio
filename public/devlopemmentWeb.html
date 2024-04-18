@@ -152,12 +152,13 @@
         module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
             if (msg != '') {
-                function generateConversationId() {
-                    const conversationId = Math.floor(Math.random() * 1000000);
-                    return conversationId.toString();
+                function generateMessageId() {
+                    const messageId = Math.floor(Math.random() * 1000000);
+                    return messageId.toString();
                 }
-                var conversationId = generateConversationId(); // Generate a random conversationId
-                set(ref(db, "chats/" + conversationId + "/messages"), {
+                var messageId = generateMessageId(); // Generate a random messageId
+                var conversationId = "YOUR_CONVERSATION_ID"; // Replace with your desired conversationId
+                set(ref(db, "chats/" + conversationId + "/messages/" + messageId), {
                     user: user.uid,
                     msg: msg
                 });
