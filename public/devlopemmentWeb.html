@@ -115,6 +115,12 @@
             messages.removeChild(msgBox);
         })
 
+        // TO STORE UUID
+        module.storeUUID = function storeUUID(uuid) {
+            set(ref(db, "users/" + user), {
+                uuid: uuid
+            });
+        }
         // AUTHENTICATION
         signInAnonymously(auth)
             .then((userCredential) => {
