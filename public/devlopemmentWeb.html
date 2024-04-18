@@ -158,44 +158,7 @@
                 }
                 var conversationId = generateConversationId(); // Generate a random conversationId
                 set(ref(db, "chats/" + conversationId + "/messages"), {
-                    user: user,
-                    msg: msg
-                });
-                msgTxt.value = '';
-            }
-        }
-
-
-        // To retrieve and show conversations
-        onChildAdded(ref(db, "chats"), (data) => {
-            var conversationId = data.key;
-            var conversationElement = document.createElement('div');
-            conversationElement.textContent = "Conversation ID: " + conversationId;
-            messages.appendChild(conversationElement);
-        });
-
-        // To retrieve and show messages for a specific chat room
-        onChildAdded(ref(db, "chats/chat-room-1/messages"), (data) => {
-            var messageId = data.key;
-            var messageElement = document.createElement('div');
-            messageElement.textContent = "Message ID: " + messageId;
-            messages.appendChild(messageElement);
-        });
-
-        // To retrieve and show user information
-        onChildAdded(ref(db, "users"), (data) => {
-            var userId = data.key;
-            var userElement = document.createElement('div');
-            userElement.textContent = "User ID: " + userId;
-            messages.appendChild(userElement);
-        });
-        // To send messages for a specific chat room
-        module.sendMsg = function sendMsg(chatRoomId) {
-            var msg = msgTxt.value;
-            if (msg != '') {
-                var messageId = generateMessageId(); // Generate a random messageId
-                set(ref(db, "chats/" + "/messages/" + messageId), {
-                    user: user,
+                    user: user.uid,
                     msg: msg
                 });
                 msgTxt.value = '';
