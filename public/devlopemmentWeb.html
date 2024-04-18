@@ -129,27 +129,30 @@
             });
         }
         // AUTHENTICATION
+        <script>
         signInAnonymously(auth)
             .then((userCredential) => {
                 // Signed in anonymously
                 const user = userCredential.user;
-                uid=user.uid;
+                const uid = user.uid;
                 console.log("Authenticated anonymously with user ID: ", user.uid);
+
+                const userMessagesRef = ref(db).child('messages').orderByChild('uid').equalTo(uid);
+
+                onValue(userMessagesRef, (snapshot) => {
+                    const data = snapshot.val();
+                    // data contient maintenant tous les messages de l'utilisateur connecté
+                    console.log(data);
+                });
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error("Authentication error: ", errorCode, errorMessage);
             });
-
-            const userMessagesRef = ref(db, 'messages/').orderByChild('uid').equalTo(uid);
-
-onValue(userMessagesRef, (snapshot) => {
-  const data = snapshot.val();
-  // data contient maintenant tous les messages de l'utilisateur connecté
-  console.log(data);
-});
+        </script>
             </script>
+            <script src="js/script.js"></script>
     </body>
 
 
