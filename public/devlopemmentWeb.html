@@ -77,6 +77,8 @@
         // variables
         var msgTxt = document.getElementById('msgTxt');
         var user;
+        var uid;
+        
         if (sessionStorage.getItem('user')) {
             user = sessionStorage.getItem('user');
         } else {
@@ -90,7 +92,7 @@
             set(ref(db, "messages/" + timestamp), {
                 msg: msg,
                 user: user,
-              
+                uid: uid
             })
 
             msgTxt.value = "";
