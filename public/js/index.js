@@ -1,3 +1,5 @@
+const { initializeApp } = require("firebase/app");
+const { set, onChildAdded } = require("firebase/database");
 
 var firebaseConfig = {
   apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
@@ -18,36 +20,42 @@ var firebaseConfig = {
 
 };
 firebase.initializeApp(firebaseConfig);
-
+const app=initializeApp(firebaseConfig);
 const db = firebase.database();
 
 const username = prompt("Please Tell Us Your Name");
+var msgTxt=document.getElementById("msgTxt");
+var sender;
+if(sessionStorage.getItem("username")){
+  sender=sessionStorage.getItem("username");}
+  else{
+    sender=prompt("Please Tell Us Your Name");
+    sessionStorage.setItem("username",username);
+  }
 
-function sendMessage(e) {
-  e.preventDefault();
-  const timestamp = Date.now();
-  const messageInput = document.getElementById("message-input");
-  const message = messageInput.value;
-  messageInput.value = "";
-  db.ref("messages/" + timestamp).set({
-    usr: username,
-    msg: message,
+module.sendMsg = function sendMsg() {
+  var msg=msgTxt.value;
+  var timestamp=new Date().getTime();
+  set(ref(db,"messages/"+timestamp),{
+    msg:msg,
+    username:username
   });
+  }
+  onChildAdded(ref(db,"messages"), (data)=>{
+    if(data.val().sender == sender){
+        messages.innerHTML += "<div style=justify-content:end class=outer id="+data.key+"><div id=inner class=me>you : "+data.val().msg+"<button id=dltMsg onclick=module.dltMsg("+data.key+")>DELETE</button></div></div>";
+    } else {
+        messages.innerHTML += "<div class=outer id="+data.key+"><div id=inner class=notMe>"+data.val().sender+" : "+data.val().msg+"</div></div>";
+    }
+})
+
+// TO DELETE MSG
+module.dltMsg = function dltMsg(key){
+    remove(ref(db,"messages/"+key));
 }
-const fetchChat = db.ref("messages/");
 
-
-fetchChat.on("child_added", function (snapshot) {
-  const messages = snapshot.val();
-  const message = `<li class=${username === messages.username ? "sent" : "receive"}><span>${messages.username}: </span>${messages.message}</li>`;
-  document.getElementById("messages").innerHTML += message;
-});
-
-// Retrieve and display existing messages
-fetchChat.once("value", function (snapshot) {
-  snapshot.forEach(function (childSnapshot) {
-    const messages = childSnapshot.val();
-    const message = `<li class=${username === messages.username ? "sent" : "receive"}><span>${messages.username}: </span>${messages.message}</li>`;
-    document.getElementById("messages").innerHTML += message;
-  });
-});
+// WHEN MSG IS DELETED
+onChildRemoved(ref(db,"messages"),(data)=>{
+    var msgBox = document.getElementById(data.key);
+    messages.removeChild(msgBox);
+})
