@@ -78,7 +78,8 @@
         </script>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js">
+    </script>
     <script src="js/firebaseConfig.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
@@ -86,16 +87,21 @@
         import { initializeApp } from "js/firebaseConfig.js";
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-
- 
+        
+        
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const auth = getAuth(app);
-
+        
         // variables
         var msgTxt = document.getElementById('msgTxt');
         var user;
-
+        
+        module = {};
+        module.promptUsername = function promptUsername() {
+            user = prompt('PLEASE ENTER YOUR NAME');
+            sessionStorage.setItem('user', user);
+        }
         if (sessionStorage.getItem('user')) {
             user = sessionStorage.getItem('user');
         } else {
