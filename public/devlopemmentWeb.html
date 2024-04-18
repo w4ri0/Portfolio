@@ -117,7 +117,9 @@
         }
         module.storeUUID = function storeUUID(uid) {
             set(ref(db, "users/" + user), {
-                uuid: uid // Store the uid in the /users collection
+                uuid: uid, // Store the uid in the /users collection
+            email: email, // Store the email of the user
+            password: password // Store the password of the user
             });
         }
         // TO RECEIVE MSG
