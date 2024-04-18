@@ -46,7 +46,15 @@
     <div id="sendMsg">
         <input type="text" id="msgTxt" placeholder="ENTER YOUR MSG...">
         <input type="submit" id="msgBtn" value="send" onclick="module.sendMsg()">
-    </div>
+        <script>
+            // Listen for Enter key press event
+            document.getElementById('msgTxt').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                module.sendMsg();
+            }
+            });
+        </script>
+        </div>
 
     <script>
         module = {};
