@@ -208,7 +208,13 @@
                 console.log("User not authenticated.");
             }
         }
-
+        //TO RETRIEVE THE MESSAGES
+        function getMessages() {
+            const messages = ref(db, 'chats/*/messages');
+            onChildAdded(messages, (data) => {
+                console.log(data.val());
+            });
+        }
         // WHEN MSG IS DELETED
         onChildRemoved(ref(db, "chats/*/messages"), (data) => {
             var msgBox = document.getElementById(data.key);
