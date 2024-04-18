@@ -76,6 +76,8 @@
     <script src="js/firebaseConfig.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js"></script>
     <script type="module">
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
@@ -83,6 +85,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const auth = getAuth(app);
+        const analytics = getAnalytics(app);
 
         // variables
         var msgTxt = document.getElementById('msgTxt');
