@@ -133,6 +133,7 @@
             .then((userCredential) => {
                 // Signed in anonymously
                 const user = userCredential.user;
+                uid=user.uid;
                 console.log("Authenticated anonymously with user ID: ", user.uid);
             })
             .catch((error) => {
