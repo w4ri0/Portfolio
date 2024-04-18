@@ -104,11 +104,31 @@
         }
         // TO RECEIVE MSG
         onChildAdded(ref(db, "messages"), (data) => {
+            var messageElement = document.createElement('div');
+            var textElement = document.createElement('div');
+            var buttonElement = document.createElement('button');
+
             if (data.val().user == user) {
-                messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg('" + data.key + "')>DELETE</button></div></div>";
+                messageElement.setAttribute('style', 'justify-content:end');
+                messageElement.setAttribute('class', 'outer');
+                messageElement.setAttribute('id', data.key);
+                textElement.setAttribute('id', 'inner');
+                textElement.setAttribute('class', 'me');
+                textElement.textContent = "you : " + data.val().msg;
+                buttonElement.setAttribute('id', 'dltMsg');
+                buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
+                buttonElement.textContent = 'DELETE';
+                textElement.appendChild(buttonElement);
             } else {
-                messages.innerHTML += "<div class=outer id=" + data.key + "><div id=inner class=notMe>" + data.val().user + " : " + data.val().msg + "</div></div>";
+                messageElement.setAttribute('class', 'outer');
+                messageElement.setAttribute('id', data.key);
+                textElement.setAttribute('id', 'inner');
+                textElement.setAttribute('class', 'notMe');
+                textElement.textContent = data.val().user + " : " + data.val().msg;
             }
+
+            messageElement.appendChild(textElement);
+            messages.appendChild(messageElement);
         });
 
         // TO DELETE MSG
