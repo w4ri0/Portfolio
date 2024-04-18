@@ -98,7 +98,7 @@
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in 
-                    console.log(user);
+                    alert(user);
                     user = userCredential.user;
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                 })
@@ -116,7 +116,7 @@
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in
-                    console.log(user);
+                    alert(user);
                     user = userCredential.user;
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                 })
