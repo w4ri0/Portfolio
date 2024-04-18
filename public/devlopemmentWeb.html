@@ -86,7 +86,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+        import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
@@ -176,10 +176,10 @@
                 .then((userCredential) => {
                     // Signed in
                     const user = userCredential.user;
-                    console.log("Signed in as ", user.email);
+                    alert("Signed in as ", user.email);
                 })
                 .catch((error) => {
-                    console.error("Error signing in", error);
+                    alert("Error signing in", error);
                 });
         });
 
@@ -192,10 +192,10 @@
                 .then((userCredential) => {
                     // Signed up
                     const user = userCredential.user;
-                    console.log("Signed up as ", user.email);
+                    alert("Signed up as ", user.email);
                 })
                 .catch((error) => {
-                    console.error("Error signing up", error);
+                    alert("Error signing up", error);
                 });
         });
         // AUTHENTICATION
