@@ -1,3 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gabriel Dagon | Opérateur Numérique (Digital Operator)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description"
+        content="Gabriel DAGON est un Opérateiur numérique chez digitanie.Ce site web montre ses réalisations et permet de le contacter">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+    <header class="navbar">
+        <button role="button" aria-label="bouton" id="show-menu" class="show-menu">
+            <div class="nav-icon"><img src="menu.png" class="menu" alt="image menu"></div>
+        </button>
+        <nav class="close-container">
+            <div class="menu-block" id="nav-menu">
+                <ul class="navUL fadein">
+                    <div class="li-container">
+                        <li><a href="/Accueil">Accueil</a></li>
+                    </div>
+                    <div class="li-container">
+                        <li><a href="/Portfolio">Portfolio Web</a></li>
+                    </div>
+                    <div class="li-container">
+                        <li><a href="#">Kittens</a></li>
+                    </div>
+                    <div class="li-container">
+                        <li><a href="#">Bunnies</a></li>
+                    </div>
+                    <div class="li-container">
+                        <li><a href="#">Contact</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
 <!-- Formulaire de connexion -->
 <form id="login-form">
     <h2>Connexion</h2>
@@ -19,126 +61,139 @@
     <input type="password" id="register-password" required>
     <button type="submit">S'inscrire</button>
 </form>
-<div id="messages"></div>
+    <div id="messages"></div>
 
-<div id="sendMsg">
-    <input type="text" id="msgTxt" placeholder="ENTER YOUR MSG...">
-    <input type="submit" id="msgBtn" value="send" onclick="module.sendMsg()">
-    <script>
-        // Listen for Enter key press event
-        document.getElementById('msgTxt').addEventListener('keyup', function(event) {
+    <div id="sendMsg">
+        <input type="text" id="msgTxt" placeholder="ENTER YOUR MSG...">
+        <input type="submit" id="msgBtn" value="send" onclick="module.sendMsg()">
+        <script>
+            // Listen for Enter key press event
+            document.getElementById('msgTxt').addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
                 module.sendMsg();
             }
-        });
+            });
+        </script>
+        </div>
+
+    <script>
+        module = {};
+        module.promptUsername = function promptUsername() {
+            user = prompt('PLEASE ENTER YOUR NAME');
+            sessionStorage.setItem('user', user);
+        }
     </script>
-</div>
+    <script src="js/firebaseConfig.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
-<script>
-    module = {};
-    module.promptUsername = function promptUsername() {
-        user = prompt('PLEASE ENTER YOUR NAME');
-        sessionStorage.setItem('user', user);
-    }
-</script>
-<script src="js/firebaseConfig.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-    import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
 
-    const firebaseConfig = {
-        // Add your Firebase configuration here
-    };
+        // variables
+        var msgTxt = document.getElementById('msgTxt');
+        var user;
+        var uid;
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const auth = getAuth(app);
+        if (sessionStorage.getItem('user')) {
+            user = sessionStorage.getItem('user');
+        } else {
+            module.promptUsername();
+        }
 
-    // variables
-    var msgTxt = document.getElementById('msgTxt');
-    var user;
-
-    if (sessionStorage.getItem('user')) {
-        user = sessionStorage.getItem('user');
-    } else {
-        module.promptUsername();
-    }
-
-    // TO SEND MESSAGES
-    module.sendMsg = function sendMsg(conversationId) {
-        var msg = msgTxt.value;
-        if (msg != '') {
+        // TO SEND MESSAGES
+        module.sendMsg = function sendMsg(conversationId) {
+            var msg = msgTxt.value;
+            if (msg != '') {
             set(ref(db, "conversations/" + conversationId + "/messages"), {
-                user: user,
-                msg: msg
+            user: user,
+            msg: msg
             });
             msgTxt.value = '';
+            }
         }
-    }
+        module.storeUUID = function storeUUID(uid) {
+            set(ref(db, "users/" + user), {
+            uuid: uid, // Store the uid in the /users collection
+            email: email, // Store the email of the user
+            });
+        }
 
-    // TO CONNECT USER
-    document.getElementById('register-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var email = document.getElementById('register-email').value;
-        var password = document.getElementById('register-password').value;
-        createUserWithEmailAndPassword(auth, email, password)
+        // TO CONNECT USER
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('register-email').value;
+            var pseudo = document.getElementById('pseudo').value;
+            var password = document.getElementById('register-password').value;
+            createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // User created successfully
-                const user = userCredential.user;
-                sessionStorage.setItem('user', user.email);
-                alert("User created successfully with email: " + user.email);
+            // User created successfully
+            const user = userCredential.user;
+            sessionStorage.setItem('user', user.email);
+            alert("User created successfully with email: " + user.email);
             })
             .catch((error) => {
-                alert("Error creating user: " + error.message);
+            alert("Error creating user: " + error.message);
             });
-    });
+        });
+        // TO RECEIVE MSG
+        onChildAdded(ref(db, "conversations/conversation1/messages"), (data) => {
+            var messageElement = document.createElement('div');
+            var textElement = document.createElement('div');
+            var buttonElement = document.createElement('button');
 
-    // TO RECEIVE MSG
-    onChildAdded(ref(db, "conversations/{validConversationId}/messages"), (data) => {
-        var messageElement = document.createElement('div');
-        var textElement = document.createElement('div');
-        var buttonElement = document.createElement('button');
+            if (data.val().user == user) {
+                messageElement.setAttribute('style', 'justify-content:end');
+                messageElement.setAttribute('class', 'outer');
+                messageElement.setAttribute('id', data.key);
+                textElement.setAttribute('id', 'inner');
+                textElement.setAttribute('class', 'me');
+                textElement.textContent = "you : " + data.val().msg;
+                buttonElement.setAttribute('id', 'dltMsg');
+                buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
+                buttonElement.textContent = '🗑️';
+                textElement.appendChild(buttonElement);
+            } else {
+                messageElement.setAttribute('class', 'outer');
+                messageElement.setAttribute('id', data.key);
+                textElement.setAttribute('id', 'inner');
+                textElement.setAttribute('class', 'notMe');
+                textElement.textContent = data.val().user + " : " + data.val().msg;
+            }
 
-        if (data.val().user == user) {
-            messageElement.setAttribute('style', 'justify-content:end');
-            messageElement.setAttribute('class', 'outer');
-            messageElement.setAttribute('id', data.key);
-            textElement.setAttribute('id', 'inner');
-            textElement.setAttribute('class', 'me');
-            textElement.textContent = "you : " + data.val().msg;
-            buttonElement.setAttribute('id', 'dltMsg');
-            buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
-            buttonElement.textContent = '🗑️';
-            textElement.appendChild(buttonElement);
-        } else {
-            messageElement.setAttribute('class', 'outer');
-            messageElement.setAttribute('id', data.key);
-            textElement.setAttribute('id', 'inner');
-            textElement.setAttribute('class', 'notMe');
-            textElement.textContent = data.val().user + " : " + data.val().msg;
+            messageElement.appendChild(textElement);
+            messages.appendChild(messageElement);
+        });
+
+        // TO DELETE MSG
+        module.dltMsg = function dltMsg(key) {
+            const user = getAuth().currentUser;
+            if (uid === user.uid) {
+                remove(ref(db, "messages/" + key));
+            } else {
+                console.log("User not authenticated.");
+            }
         }
 
-        messageElement.appendChild(textElement);
-        messages.appendChild(messageElement);
-    });
+        // WHEN MSG IS DELETED
+        onChildRemoved(ref(db, "messages"), (data) => {
+            var msgBox = document.getElementById(data.key);
+            messages.removeChild(msgBox);
+        })
 
-    // TO DELETE MSG
-    module.dltMsg = function dltMsg(key) {
-        const user = getAuth().currentUser;
-        if (uid === user.uid) {
-            remove(ref(db, "messages/" + key));
-        } else {
-            console.log("User not authenticated.");
-        }
-    }
+        // TO STORE UUID
+        // TO STORE UUID
+        // Formulaire de connexion
+       
+        // AUTHENTICATION
+        // signInAnonymously(auth)
+            </script>
+            <script src="js/script.js"></script>
+    </body>
 
-    // WHEN MSG IS DELETED
-    onChildRemoved(ref(db, "messages"), (data) => {
-        var msgBox = document.getElementById(data.key);
-        messages.removeChild(msgBox);
-    })
-</script>
-<script src="js/script.js"></script>
+
+</html>
