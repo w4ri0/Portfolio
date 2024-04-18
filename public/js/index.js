@@ -20,7 +20,6 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-const { set, onChildAdded } = require("firebase/database");
 const username = prompt("Please Tell Us Your Name");
 var msgTxt=document.getElementById("msgTxt");
 var sender;
