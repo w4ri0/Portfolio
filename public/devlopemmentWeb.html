@@ -56,11 +56,15 @@
         }
     </script>
     <script src="js/firebaseConfig.js"></script>
-    <script type="module">
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
+    <script type="module"></script>
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+        
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+        const auth = getAuth(app);
 
         // variables
         var msgTxt = document.getElementById('msgTxt');
@@ -86,11 +90,11 @@
         // TO RECEIVE MSG
         onChildAdded(ref(db, "messages"), (data) => {
             if (data.val().sender == sender) {
-                messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg(" + data.key + ")>DELETE</button></div></div>";
+                messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg (" + data.key + ")>DELETE</button></div></div>";
             } else {
                 messages.innerHTML += "<div class=outer id=" + data.key + "><div id=inner class=notMe>" + data.val().sender + " : " + data.val().msg + "</div></div>";
             }
-        })
+        });
 
         // TO DELETE MSG
         module.dltMsg = function dltMsg(key) {
@@ -102,8 +106,21 @@
             var msgBox = document.getElementById(data.key);
             messages.removeChild(msgBox);
         })
-    </script>
+
+        // AUTHENTICATION
+        signInAnonymously(auth)
+            .then((userCredential) => {
+                // Signed in anonymously
+                const user = userCredential.user;
+                console.log("Authenticated anonymously with user ID: ", user.uid);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Authentication error: ", errorCode, errorMessage);
+            });
+    </script>    
     </body>
-    
+
 
 </html>
