@@ -69,7 +69,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-        
+
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const auth = getAuth(app);
@@ -116,8 +116,9 @@
         })
 
         // AUTHENTICATION
-        signInAnonymously(auth)
-            .then((userCredential) => {
+
+    signInAnonymously(auth)
+         .then(() => {
             // Signed in anonymously
             const anonUser = userCredential.anonUser;
             console.log("Authenticated anonymously with user ID: ", anonUser.uid);
