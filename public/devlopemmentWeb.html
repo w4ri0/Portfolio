@@ -159,7 +159,7 @@
                 msgTxt.value = '';
             }
         }
-
+        window.module = module.sendMsg;
         function generateConversationId() {
             const conversationId = Math.floor(Math.random() * 1000000);
             return conversationId.toString();
