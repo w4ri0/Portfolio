@@ -117,7 +117,7 @@
                 textElement.textContent = "you : " + data.val().msg;
                 buttonElement.setAttribute('id', 'dltMsg');
                 buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
-                buttonElement.textContent = 'DELETE';
+                buttonElement.textContent = '🗑️';
                 textElement.appendChild(buttonElement);
             } else {
                 messageElement.setAttribute('class', 'outer');
