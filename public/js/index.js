@@ -1,4 +1,4 @@
-const { set, onChildAdded } = require("firebase/database");
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyAp7qibXTh9AtuaSEkznrJn6MlAvYelNQw",
@@ -20,7 +20,7 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-
+const { set, onChildAdded } = require("firebase/database");
 const username = prompt("Please Tell Us Your Name");
 var msgTxt=document.getElementById("msgTxt");
 var sender;
