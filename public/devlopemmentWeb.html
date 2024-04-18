@@ -89,7 +89,8 @@
             var timestamp = new Date().getTime();
             set(ref(db, "messages/" + timestamp), {
                 msg: msg,
-                user: user
+                user: user,
+                uid:user.uid
             })
 
             msgTxt.value = "";
@@ -116,9 +117,9 @@
         })
 
         // TO STORE UUID
-        module.storeUUID = function storeUUID(uuid) {
+        module.storeUUID = function storeUUID(uid) {
             set(ref(db, "users/" + user), {
-                uuid: uuid
+                uuid: user.uid
             });
         }
         // AUTHENTICATION
