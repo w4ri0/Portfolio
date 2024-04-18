@@ -1,4 +1,3 @@
-const { initializeApp } = require("firebase/app");
 const { set, onChildAdded } = require("firebase/database");
 
 var firebaseConfig = {
