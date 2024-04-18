@@ -7,8 +7,9 @@
     <title>Gabriel Dagon | Opérateur Numérique (Digital Operator)</title>
     <link rel="stylesheet" href="css/style.css">
     <meta name="description"
-        content="Gabriel DAGON est un Opérateiur numérique chez digitanie.Ce site web montre ses réalisations et permet de le contacter">
+        content="Gabriel DAGON est un Opérateur numérique chez digitanie.Ce site web montre ses réalisations et permet de le contacter">
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
 
 <body>
@@ -90,7 +91,8 @@
             set(ref(db, "messages/" + timestamp), {
                 msg: msg,
                 user: user,
-                          })
+                uid: user.uid
+            })
 
             msgTxt.value = "";
         }
