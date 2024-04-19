@@ -197,11 +197,11 @@
                     messageElement = document.createElement('div');
                     var textElement = document.createElement('div');
                     var buttonElement = document.createElement('button');
-                    var user = userCredential.user.email; // Access the user's email correctly
-                    if (data.val().user.email == user) {
-                        messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg('" + data.key + "')>DELETE</button></div></div>"
+                    var user = user.email; // Access the user's email correctly
+                    if (data.val().user == user) {
+                        messageElement.innerHTML = "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg('" + data.key + "')>DELETE</button></div></div>";
                         messageElement.setAttribute('class', 'outer');
-                         textElement.appendChild(buttonElement);
+                        textElement.appendChild(buttonElement);
                     } else {
                         messageElement.setAttribute('class', 'outer');
                         messageElement.setAttribute('id', data.key);
