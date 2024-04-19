@@ -224,6 +224,7 @@
         }
         
         function dltMsg(messageId) {
+            const conversationId = document.getElementById('conversationId').value;
             remove(ref(db, 'chats/' + conversationId + '/messages/' + messageId));
         }
         // WHEN MSG IS DELETED
