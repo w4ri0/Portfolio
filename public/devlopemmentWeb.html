@@ -44,6 +44,8 @@
         <button id="logout-btn"></button>
     </div>
     <!-- Formulaire de connexion -->
+<div id="connected-user"></div>
+<div id="conversationID></div>
     <form id="login-form">
         <h2>Connexion</h2>
         <label for="login-email">Email:</label>
@@ -174,16 +176,15 @@
         }
 
         // TO RECEIVE MSG
-
+        // On page load, display conversation ID and user email
+        window.addEventListener('load', function() {
+            var conversationId = document.getElementById('conversationId').value;
+            document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+            document.getElementById('conversationID').textContent = "Conversation ID: " + conversationId;
+        });
+       
         // TO DELETE MSG
-        module.dltMsg = function dltMsg(key) {
-            const user = getAuth().currentUser;
-            if (user) {
-                remove(ref(db, "chats/*/messages/" + key));
-            } else {
-                console.log("User not authenticated.");
-            }
-        }
+
         //TO RETRIEVE THE MESSAGES
         //TO RETRIEVE THE MESSAGES
         function getMessages() {
