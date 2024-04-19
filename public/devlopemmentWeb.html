@@ -126,7 +126,7 @@
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in
-                    alert(user);
+                    alert("connecté nom d'utilisateur :"+ user.email);
                     user = userCredential.user;
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                     // Remove duplicate call to getMessages()
