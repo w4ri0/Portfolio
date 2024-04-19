@@ -143,16 +143,16 @@
         // To sign out the user
         document.getElementById('logout-btn').addEventListener('click', function () {
             signOut(auth)
-            .then(() => {
-                // Sign-out successful
-                user = null;
-                document.getElementById('connected-user').textContent = "Connected User: None";
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
+                .then(() => {
+                    // Sign-out successful
+                    user = null;
+                    document.getElementById('connected-user').textContent = "Connected User: None";
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
+                });
         });
 
         // TO SEND MESSAGES
@@ -190,45 +190,44 @@
         function getMessages() {
             var conversationId = document.getElementById('conversationId').value;
             const messages = ref(db, 'chats/' + conversationId + '/messages');
-            onChildAdded(ref(db, "chats/*/messages"), (data) => {
-            var messageElement = document.createElement('div');
-            var textElement = document.createElement('div');
-            var buttonElement = document.createElement('button');
-            if (data.val().user == user) {
-                messageElement.setAttribute('style', 'justify-content:end');
-                messageElement.setAttribute('class', 'outer');
-                messageElement.setAttribute('id', data.key);
-                textElement.setAttribute('id', 'inner');
-                textElement.setAttribute('class', 'me');
-                textElement.textContent = "you : " + data.val().msg;
-                buttonElement.setAttribute('id', 'dltMsg');
-                buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
-                buttonElement.textContent = '🗑️';
-                textElement.appendChild(buttonElement);
-            } else {
-                messageElement.setAttribute('class', 'outer');
-                messageElement.setAttribute('id', data.key);
-                textElement.setAttribute('id', 'inner');
-                textElement.setAttribute('class', 'notMe');
-                textElement.textContent = data.val().user + " : " + data.val().msg;
-            }
-            messageElement.appendChild(textElement);
-            messages.appendChild(messageElement);
-        });
-        // TO DELETE MSG
-        module.dltMsg = function dltMsg(key) {
-            const user = getAuth().currentUser;
-            if (user) {
-                remove(ref(db, "chats/*/messages/" + key));
-            } else {
-                console.log("User not authenticated.");
-            }
+            onChildAdded(messages, (data) => {
+                var messageElement = document.createElement('div');
+                var textElement = document.createElement('div');
+                var buttonElement = document.createElement('button');
+
+                if (data.val().user == user) {
+                    messageElement.setAttribute('style', 'justify-content:end');
+                    messageElement.setAttribute('class', 'outer');
+                    messageElement.setAttribute('id', data.key);
+                    textElement.setAttribute('id', 'inner');
+                    textElement.setAttribute('class', 'me');
+                    textElement.textContent = "you : " + data.val().msg;
+                    buttonElement.setAttribute('id', 'dltMsg');
+                    buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
+                    buttonElement.textContent = '🗑️';
+                    textElement.appendChild(buttonElement);
+                } else {
+                    messageElement.setAttribute('class', 'outer');
+                    messageElement.setAttribute('id', data.key);
+                    textElement.setAttribute('id', 'inner');
+                    textElement.setAttribute('class', 'notMe');
+                    textElement.textContent = data.val().user + " : " + data.val().msg;
+                    buttonElement.setAttribute('id', 'dltMsg');
+                    buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
+                    buttonElement.textContent = '🗑️';
+                    textElement.appendChild(buttonElement);
+                }
+
+                messageElement.appendChild(textElement);
+                document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
+            });
         }
+        
         // WHEN MSG IS DELETED
-        onChildRemoved(ref(db, "chats/*/messages"), (data) => {
+        onChildRemoved(ref(db, "chats/*/messages/"), (data) => {
             var msgBox = document.getElementById(data.key);
             messages.removeChild(msgBox);
-        })};
+        })
     </script>
     <script src="js/script.js"></script>
 </body>
