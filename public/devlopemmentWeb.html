@@ -107,8 +107,8 @@
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in 
-                    alert(user);
                     user = userCredential.user;
+                    alert(user.mail);
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                     // Remove duplicate call to getMessages()
                 })
@@ -126,8 +126,8 @@
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in
-                    alert(user);
                     user = userCredential.user;
+                    alert(user.mail);
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                     // Remove duplicate call to getMessages()
                 })
