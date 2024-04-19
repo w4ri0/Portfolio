@@ -179,7 +179,10 @@
         // On page load, display conversation ID and user email
         window.addEventListener('load', function() {
             var conversationId = document.getElementById('conversationId').value;
+            var user = auth.currentUser;
+            if (user) {
             document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+            }
             document.getElementById('conversationID').textContent = "Conversation ID: " + conversationId;
         });
        
