@@ -151,13 +151,12 @@
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                     // Remove duplicate call to getMessages()
                     getMessages();
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
                 });
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
             const fetchChat = db.ref("chats/" + conversationId + "/messages");
 fetchChat.on("child_added", function (snapshot) {
     const message = snapshot.val();
