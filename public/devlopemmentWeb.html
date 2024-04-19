@@ -105,18 +105,18 @@
             var email = document.getElementById('register-email').value;
             var password = document.getElementById('register-password').value;
             createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
-        alert(user);
-        user = userCredential.user;
-        document.getElementById('connected-user').textContent = "Connected User: " + user.email;
-        getMessages(); // Call getMessages() here
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-    });
+                .then((userCredential) => {
+                    // Signed in 
+                    alert(user);
+                    user = userCredential.user;
+                    document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+                    // Remove duplicate call to getMessages()
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
+                });
         });
         // To authenticate the user
         document.getElementById('login-form').addEventListener('submit', function (event) {
@@ -124,13 +124,13 @@
             var email = document.getElementById('login-email').value;
             var password = document.getElementById('login-password').value;
             signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-        // Signed in
-         alert(user);
-          user = userCredential.user;
-           document.getElementById('connected-user').textContent = "Connected User: " + user.email;
-              getMessages(); // Call getMessages() here
-    })
+                .then((userCredential) => {
+                    // Signed in
+                    alert(user);
+                    user = userCredential.user;
+                    document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+                    // Remove duplicate call to getMessages()
+                })
     .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
