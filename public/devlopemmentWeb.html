@@ -124,12 +124,12 @@
             var email = document.getElementById('login-email').value;
             var password = document.getElementById('login-password').value;
             signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+        .then((userCredential) => {
         // Signed in
-        alert(user);
-        user = userCredential.user;
-        document.getElementById('connected-user').textContent = "Connected User: " + user.email;
-        getMessages(); // Call getMessages() here
+         alert(user);
+          user = userCredential.user;
+           document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+              getMessages(); // Call getMessages() here
     })
     .catch((error) => {
         var errorCode = error.code;
@@ -160,7 +160,7 @@
             if (msg != '' && conversationId != '') {
                 var messageId = generateMessageId(); // Generate a random messageId
                 set(ref(db, "chats/" + conversationId + "/messages/" + messageId), {
-                    user: user.uid,
+                    user: user.email,
                     msg: msg
                 });
                 msgTxt.value = '';
