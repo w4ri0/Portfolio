@@ -182,8 +182,10 @@
             }
         }
         //TO RETRIEVE THE MESSAGES
+        //TO RETRIEVE THE MESSAGES
         function getMessages() {
-            const messages = ref(db, 'chats/*/messages');
+            var conversationId = document.getElementById('conversationId').value;
+            const messages = ref(db, 'chats/' + conversationId + '/messages');
             onChildAdded(messages, (data) => {
                 var messageElement = document.createElement('div');
                 var textElement = document.createElement('div');
