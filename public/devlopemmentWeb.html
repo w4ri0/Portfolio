@@ -72,7 +72,7 @@
 
     <div id="sendMsg">
         <input type="text" id="msgTxt" placeholder="ENTER YOUR MSG...">
-        <input type="submit" id="msgBtn" value="send" >
+        <input type="submit" id="msgBtn" value="send" onclick="module.sendMsg()">
 
     </div>
 
@@ -119,66 +119,34 @@
                 });
         });
         // To authenticate the user
-        var loginForm = document.getElementById('login-form');
-        if (loginForm) {
-            loginForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-                var email = document.getElementById('login-email').value;
-                var password = document.getElementById('login-password').value;
-                signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        // Signed in
-                        user = userCredential.user;
-                        alert("connecté nom d'utilisateur :" + user.email);
-                        document.getElementById('connected-user').textContent = "Connected User: " + user.email;
-                        // Remove duplicate call to getMessages()
-                        getMessages();
-                    })
-                    .catch((error) => {
-                        var errorCode = error.code;
-                        var errorMessage = error.message;
-                        console.log(errorMessage);
-                    });
-            });
-        }
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
             var email = document.getElementById('login-email').value;
             var password = document.getElementById('login-password').value;
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in
-                    alert("connecté nom d'utilisateur :"+ user.email);
+                    alert(user);
                     user = userCredential.user;
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                     // Remove duplicate call to getMessages()
                     getMessages();
+                    module.dltMsg = function dltMsg(key) {
+                        const user = getAuth().currentUser;
+                        if (user) {
+                            remove(ref(db, "chats/*/messages/" + key));
+                        } else {
+                            console.log("User not authenticated.");
+                        }
+                    }
                 })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorMessage);
-                });
-            const fetchChat = db.ref("chats/" + conversationId + "/messages");
-fetchChat.on("child_added", function (snapshot) {
-    const message = snapshot.val();
-    const messageElement = document.createElement('div');
-    const textElement = document.createElement('div');
-    
-    if (message.user === user.email) {
-        messageElement.setAttribute('style', 'justify-content:end');
-        messageElement.setAttribute('class', 'outer');
-        textElement.setAttribute('id', 'inner');
-        textElement.setAttribute('class', 'me');
-        textElement.textContent = "you : " + message.msg;
-    } else {
-        messageElement.setAttribute('class', 'outer');
-        textElement.setAttribute('id', 'inner');
-        textElement.setAttribute('class', 'notMe');
-        textElement.textContent = message.user + " : " + message.msg;
-    }
-    
-    messageElement.appendChild(textElement);
-    document.getElementById('messages').appendChild(messageElement);
-});
+                })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+    });
+        });
 
         // To sign out the user
         document.getElementById('logout-btn').addEventListener('click', function () {
@@ -194,10 +162,9 @@ fetchChat.on("child_added", function (snapshot) {
                     console.log(errorMessage);
                 });
         });
+
         // TO SEND MESSAGES
-        // TO SEND MESSAGES
-        // TO SEND MESSAGES
-       function sendMsg() {
+        module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
             var conversationId = document.getElementById('conversationId').value;
             if (msg != '' && conversationId != '') {
@@ -209,26 +176,33 @@ fetchChat.on("child_added", function (snapshot) {
                 msgTxt.value = '';
             }
         }
-document.getElementById('msgBtn').addEventListener('send', sendMsg());
+
+        function generateMessageId() {
+            const messageId = Math.floor(Math.random() * 1000000);
+            return messageId.toString();
+        }
+
+        // TO RECEIVE MSG
+
         // TO DELETE MSG
-        function dltMsg(key) {
+        module.dltMsg = function dltMsg(key) {
             const user = getAuth().currentUser;
             if (user) {
                 remove(ref(db, "chats/*/messages/" + key));
             } else {
                 console.log("User not authenticated.");
             }
-        };
-
+        }
+        //TO RETRIEVE THE MESSAGES
+        //TO RETRIEVE THE MESSAGES
         function getMessages() {
-            var conversationId = document.getElementById('conversationId').value; // Récupérer l'ID de la conversation à partir du champ d'entrée
+            var conversationId = document.getElementById('conversationId').value;
             const messages = ref(db, 'chats/' + conversationId + '/messages');
             onChildAdded(messages, (data) => {
                 var messageElement = document.createElement('div');
                 var textElement = document.createElement('div');
                 var buttonElement = document.createElement('button');
 
-                
                 if (data.val().user == user) {
                     messageElement.setAttribute('style', 'justify-content:end');
                     messageElement.setAttribute('class', 'outer');
@@ -247,30 +221,18 @@ document.getElementById('msgBtn').addEventListener('send', sendMsg());
                     textElement.setAttribute('class', 'notMe');
                     textElement.textContent = data.val().user + " : " + data.val().msg;
                 }
-            });
-        }
 
                 messageElement.appendChild(textElement);
                 document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
-                                            messageElement.setAttribute('id', data.key);
-                                    messageElement.appendChild(textElement);
-                                    document.getElementById('messages').appendChild(messageElement); // Ajouter messageElement au conteneur 'messages';
-       
-        // WHEN MSG IS ADDED
-        
-
-
+            });
+        }
         // WHEN MSG IS DELETED
         onChildRemoved(ref(db, "chats/*/messages"), (data) => {
             var msgBox = document.getElementById(data.key);
             messages.removeChild(msgBox);
         })
-        ;
-    </script>
-
     </script>
     <script src="js/script.js"></script>
-
 </body>
 
 </html>
