@@ -221,7 +221,6 @@ document.getElementById('msgBtn').addEventListener('send', sendMsg());
         };
 
         function getMessages() {
-            var conversationId = document.getElementById('conversationId').value;
             var conversationId = document.getElementById('conversationId').value; // Récupérer l'ID de la conversation à partir du champ d'entrée
             const messages = ref(db, 'chats/' + conversationId + '/messages');
             onChildAdded(messages, (data) => {
@@ -238,8 +237,6 @@ document.getElementById('msgBtn').addEventListener('send', sendMsg());
                     textElement.setAttribute('class', 'me');
                     textElement.textContent = "you : " + data.val().msg;
                     buttonElement.setAttribute('id', 'dltMsg');
-                                            messageElement.setAttribute('id', data.key);
-                                    buttonElement.setAttribute('id', 'dltMsg');
                     buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
                     buttonElement.textContent = '🗑️';
                     textElement.appendChild(buttonElement);
@@ -250,6 +247,8 @@ document.getElementById('msgBtn').addEventListener('send', sendMsg());
                     textElement.setAttribute('class', 'notMe');
                     textElement.textContent = data.val().user + " : " + data.val().msg;
                 }
+            });
+        }
 
                 messageElement.appendChild(textElement);
                 document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
@@ -257,8 +256,9 @@ document.getElementById('msgBtn').addEventListener('send', sendMsg());
                                     messageElement.appendChild(textElement);
                                     document.getElementById('messages').appendChild(messageElement); // Ajouter messageElement au conteneur 'messages';
        
-     });
-        }
+        // WHEN MSG IS ADDED
+        
+
 
         // WHEN MSG IS DELETED
         onChildRemoved(ref(db, "chats/*/messages"), (data) => {
