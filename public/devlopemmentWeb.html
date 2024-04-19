@@ -138,7 +138,29 @@
                 var errorMessage = error.message;
                 console.log(errorMessage);
             });
-     
+            const fetchChat = db.ref("chats/" + conversationId + "/messages");
+fetchChat.on("child_added", function (snapshot) {
+    const message = snapshot.val();
+    const messageElement = document.createElement('div');
+    const textElement = document.createElement('div');
+    
+    if (message.user === user.email) {
+        messageElement.setAttribute('style', 'justify-content:end');
+        messageElement.setAttribute('class', 'outer');
+        textElement.setAttribute('id', 'inner');
+        textElement.setAttribute('class', 'me');
+        textElement.textContent = "you : " + message.msg;
+    } else {
+        messageElement.setAttribute('class', 'outer');
+        textElement.setAttribute('id', 'inner');
+        textElement.setAttribute('class', 'notMe');
+        textElement.textContent = message.user + " : " + message.msg;
+    }
+    
+    messageElement.appendChild(textElement);
+    document.getElementById('messages').appendChild(messageElement);
+});
+
         // To sign out the user
         document.getElementById('logout-btn').addEventListener('click', function () {
             signOut(auth)
@@ -191,26 +213,13 @@
                 var buttonElement = document.createElement('button');
                 
                 if (data.val().user == user) {
-                    messageElement.setAttribute('style', 'justify-content:end');
-                    messageElement.setAttribute('class', 'outer');
-                    messageElement.setAttribute('id', data.key);
-                    textElement.setAttribute('id', 'inner');
-                    textElement.setAttribute('class', 'me');
-                    textElement.textContent = "you : " + data.val().msg;
-                    buttonElement.setAttribute('id', 'dltMsg');
+                                            messageElement.setAttribute('id', data.key);
+                                    data.val()                    buttonElement.setAttribute('id', 'dltMsg');
                     buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
                     buttonElement.textContent = '🗑️';
                     textElement.appendChild(buttonElement);
-                } else {
-                    messageElement.setAttribute('class', 'outer');
-                    messageElement.setAttribute('id', data.key);
-                    textElement.setAttribute('id', 'inner');
-                    textElement.setAttribute('class', 'notMe');
-                    textElement.textContent = data.val().user + " : " + data.val().msg;
-                }
-                
-                messageElement.appendChild(textElement);
-                document.getElementById('messages').appendChild(messageElement); // Ajouter messageElement au conteneur 'messages'
+                                            messageElement.setAttribute('id', data.key);
+                                    data.val()data.val()                                                 // Ajouter messageElement au conteneur 'messages'
             });
         }
 
