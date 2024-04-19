@@ -211,6 +211,10 @@
                     textElement.setAttribute('id', 'inner');
                     textElement.setAttribute('class', 'notMe');
                     textElement.textContent = data.val().user + " : " + data.val().msg;
+                    buttonElement.setAttribute('id', 'dltMsg');
+                    buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
+                    buttonElement.textContent = '🗑️';
+                    textElement.appendChild(buttonElement);
                 }
 
                 messageElement.appendChild(textElement);
