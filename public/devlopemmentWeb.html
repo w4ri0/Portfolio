@@ -210,11 +210,6 @@
             var msgBox = document.getElementById(data.key);
             messages.removeChild(msgBox);
         })
-    </script>
-    <script src="js/script.js"></script>
-</html>
-                })
-                })
     .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -225,16 +220,16 @@
         // To sign out the user
         document.getElementById('logout-btn').addEventListener('click', function () {
             signOut(auth)
-                .then(() => {
-                    // Sign-out successful
-                    user = null;
-                    document.getElementById('connected-user').textContent = "Connected User: None";
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorMessage);
-                });
+            .then(() => {
+                // Sign-out successful
+                user = null;
+                document.getElementById('connected-user').textContent = "Connected User: None";
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorMessage);
+            });
         });
 
         // TO SEND MESSAGES
@@ -276,7 +271,7 @@
                 var messageElement = document.createElement('div');
                 var textElement = document.createElement('div');
                 var buttonElement = document.createElement('button');
-
+                
                 if (data.val().user == user) {
                     messageElement.setAttribute('style', 'justify-content:end');
                     messageElement.setAttribute('class', 'outer');
@@ -295,7 +290,7 @@
                     textElement.setAttribute('class', 'notMe');
                     textElement.textContent = data.val().user + " : " + data.val().msg;
                 }
-
+                
                 messageElement.appendChild(textElement);
                 document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
             });
@@ -307,6 +302,7 @@
         })
     </script>
     <script src="js/script.js"></script>
+
 </body>
 
 </html>
