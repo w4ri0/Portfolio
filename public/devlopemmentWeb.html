@@ -187,6 +187,7 @@
 
         //TO RETRIEVE THE MESSAGES
         //TO RETRIEVE THE MESSAGES
+       
         function getMessages() {
             var conversationId = document.getElementById('conversationId').value;
             const messages = ref(db, 'chats/' + conversationId + '/messages');
@@ -196,7 +197,7 @@
                     messageElement = document.createElement('div');
                     var textElement = document.createElement('div');
                     var buttonElement = document.createElement('button');
-                    var user = user.email;
+                    var user = userCredential.user.email; // Access the user's email correctly
                     if (data.val().user.email == user) {
                         messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg('" + data.key + "')>DELETE</button></div></div>"
                         messageElement.setAttribute('class', 'outer');
