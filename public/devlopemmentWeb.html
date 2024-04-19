@@ -45,7 +45,7 @@
     </div>
     <!-- Formulaire de connexion -->
 <div id="connected-user"></div>
-<div id="conversationID></div>
+<div id="conversationID"></div>
     <form id="login-form">
         <h2>Connexion</h2>
         <label for="login-email">Email:</label>
@@ -121,8 +121,8 @@
                 });
         });
         // To authenticate the user
-        document.getElementById('login-form').addEventListener('submit', function (e) {
-            e.preventDefault();
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
             var email = document.getElementById('login-email').value;
             var password = document.getElementById('login-password').value;
             signInWithEmailAndPassword(auth, email, password)
