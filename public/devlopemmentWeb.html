@@ -203,7 +203,7 @@
                 textElement.setAttribute('class', 'me');
                 textElement.textContent = "you : " + data.val().msg;
                 buttonElement.setAttribute('id', 'dltMsg');
-                buttonElement.setAttribute('onclick', "dltMsg('" + data.key + "')");
+                buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
                 buttonElement.textContent = '🗑️';
                 textElement.appendChild(buttonElement);
             } else {
@@ -213,7 +213,7 @@
                 textElement.setAttribute('class', 'notMe');
                 textElement.textContent = data.val().user + " : " + data.val().msg;
                 buttonElement.setAttribute('id', 'dltMsg');
-                buttonElement.setAttribute('onclick', "dltMsg('" + data.key + "')");
+                buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
                 buttonElement.textContent = '🗑️';
                 textElement.appendChild(buttonElement);
             }
@@ -223,7 +223,7 @@
             });
         }
         
-        function dltMsg(messageId) {
+        module.dltMsg  = function dltMsg(messageId) {
             const conversationId = document.getElementById('conversationId').value;
             remove(ref(db, 'chats/' + conversationId + '/messages/' + messageId));
         }
