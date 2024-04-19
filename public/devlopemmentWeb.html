@@ -154,6 +154,7 @@
                 });
         });
         // TO SEND MESSAGES
+        // TO SEND MESSAGES
         function sendMsg() {
             var msg = msgTxt.value;
             var conversationId = document.getElementById('conversationId').value;
@@ -166,6 +167,7 @@
                 msgTxt.value = '';
             }
         }
+
         // TO DELETE MSG
         function dltMsg(key) {
             const user = getAuth().currentUser;
@@ -175,6 +177,7 @@
                 console.log("User not authenticated.");
             }
         }
+
         // TO RECEIVE MSG
         // TO RETRIEVE THE MESSAGES
         // POUR RÉCUPÉRER LES MESSAGES
@@ -209,63 +212,12 @@
                 document.getElementById('messages').appendChild(messageElement); // Ajouter messageElement au conteneur 'messages'
             });
         }
+
         // WHEN MSG IS DELETED
         onChildRemoved(ref(db, "chats/*/messages"), (data) => {
             var msgBox = document.getElementById(data.key);
             messages.removeChild(msgBox);
-        })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-    });
-
-        // To sign out the user
-        document.getElementById('logout-btn').addEventListener('click', function () {
-            signOut(auth)
-            .then(() => {
-                // Sign-out successful
-                user = null;
-                document.getElementById('connected-user').textContent = "Connected User: None";
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
         });
-
-        // TO SEND MESSAGES
-        module.sendMsg = function sendMsg() {
-            var msg = msgTxt.value;
-            var conversationId = document.getElementById('conversationId').value;
-            if (msg != '' && conversationId != '') {
-                var messageId = generateMessageId(); // Generate a random messageId
-                set(ref(db, "chats/" + conversationId + "/messages/" + messageId), {
-                    user: user.email,
-                    msg: msg
-                });
-                msgTxt.value = '';
-            }
-        }
-
-        function generateMessageId() {
-            const messageId = Math.floor(Math.random() * 1000000);
-            return messageId.toString();
-        }
-
-        // TO RECEIVE MSG
-
-        // TO DELETE MSG
-        module.dltMsg = function dltMsg(key) {
-            const user = getAuth().currentUser;
-            if (user) {
-                remove(ref(db, "chats/*/messages/" + key));
-            } else {
-                console.log("User not authenticated.");
-            }
-        }
-   
     </script>
     <script src="js/script.js"></script>
 
