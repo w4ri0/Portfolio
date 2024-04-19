@@ -178,7 +178,7 @@ fetchChat.on("child_added", function (snapshot) {
         // TO SEND MESSAGES
         // TO SEND MESSAGES
         // TO SEND MESSAGES
-        export function sendMsg() {
+       function sendMsg() {
             var msg = msgTxt.value;
             var conversationId = document.getElementById('conversationId').value;
             if (msg != '' && conversationId != '') {
@@ -190,7 +190,7 @@ fetchChat.on("child_added", function (snapshot) {
                 msgTxt.value = '';
             }
         }
-
+document.getElementById('msgBtn').addEventListener('click', sendMsg);
         // TO DELETE MSG
         function dltMsg(key) {
             const user = getAuth().currentUser;
