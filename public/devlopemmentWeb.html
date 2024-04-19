@@ -177,13 +177,15 @@
         }
         // TO RECEIVE MSG
         // TO RETRIEVE THE MESSAGES
+        // POUR RÉCUPÉRER LES MESSAGES
         function getMessages() {
-            var conversationId = document.getElementById('conversationId').value;
+            var conversationId = document.getElementById('conversationId').value; // Récupérer l'ID de la conversation à partir du champ d'entrée
             const messages = ref(db, 'chats/' + conversationId + '/messages');
             onChildAdded(messages, (data) => {
                 var messageElement = document.createElement('div');
                 var textElement = document.createElement('div');
                 var buttonElement = document.createElement('button');
+                
                 if (data.val().user == user) {
                     messageElement.setAttribute('style', 'justify-content:end');
                     messageElement.setAttribute('class', 'outer');
@@ -192,7 +194,7 @@
                     textElement.setAttribute('class', 'me');
                     textElement.textContent = "you : " + data.val().msg;
                     buttonElement.setAttribute('id', 'dltMsg');
-                    buttonElement.setAttribute('onclick', "dltMsg('" + data.key + "')");
+                    buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
                     buttonElement.textContent = '🗑️';
                     textElement.appendChild(buttonElement);
                 } else {
@@ -200,9 +202,11 @@
                     messageElement.setAttribute('id', data.key);
                     textElement.setAttribute('id', 'inner');
                     textElement.setAttribute('class', 'notMe');
+                    textElement.textContent = data.val().user + " : " + data.val().msg;
                 }
+                
                 messageElement.appendChild(textElement);
-                document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
+                document.getElementById('messages').appendChild(messageElement); // Ajouter messageElement au conteneur 'messages'
             });
         }
         // WHEN MSG IS DELETED
@@ -261,44 +265,7 @@
                 console.log("User not authenticated.");
             }
         }
-        //TO RETRIEVE THE MESSAGES
-        //TO RETRIEVE THE MESSAGES
-        function getMessages() {
-            var conversationId = document.getElementById('conversationId').value;
-            const messages = ref(db, 'chats/' + conversationId + '/messages');
-            onChildAdded(messages, (data) => {
-                var messageElement = document.createElement('div');
-                var textElement = document.createElement('div');
-                var buttonElement = document.createElement('button');
-                
-                if (data.val().user == user) {
-                    messageElement.setAttribute('style', 'justify-content:end');
-                    messageElement.setAttribute('class', 'outer');
-                    messageElement.setAttribute('id', data.key);
-                    textElement.setAttribute('id', 'inner');
-                    textElement.setAttribute('class', 'me');
-                    textElement.textContent = "you : " + data.val().msg;
-                    buttonElement.setAttribute('id', 'dltMsg');
-                    buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
-                    buttonElement.textContent = '🗑️';
-                    textElement.appendChild(buttonElement);
-                } else {
-                    messageElement.setAttribute('class', 'outer');
-                    messageElement.setAttribute('id', data.key);
-                    textElement.setAttribute('id', 'inner');
-                    textElement.setAttribute('class', 'notMe');
-                    textElement.textContent = data.val().user + " : " + data.val().msg;
-                }
-                
-                messageElement.appendChild(textElement);
-                document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
-            });
-        }
-        // WHEN MSG IS DELETED
-        onChildRemoved(ref(db, "chats/*/messages"), (data) => {
-            var msgBox = document.getElementById(data.key);
-            messages.removeChild(msgBox);
-        })
+   
     </script>
     <script src="js/script.js"></script>
 
