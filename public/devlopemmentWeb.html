@@ -40,6 +40,8 @@
             </div>
         </nav>
     </header>
+    <img src="gsfc-20171208-archive-e000760orig-stpatricksaurora-iotd.webp" alt="image de fond"
+        class="background-image">
     <div class="container">
         <button id="logout-btn"></button>
     </div>
@@ -89,7 +91,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js"></script>
     <script type="module">
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
         const app = initializeApp(firebaseConfig);
@@ -154,6 +156,7 @@
                     console.log(errorMessage);
                 });
         });
+
 
         // TO SEND MESSAGES
         module.sendMsg = function sendMsg() {
