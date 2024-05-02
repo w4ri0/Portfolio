@@ -3,26 +3,13 @@
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
-      {
-        "source": "/Portfolio",
-        "destination": "/devlopemmentWeb.html"
-      },
-      {
-        "source": "/Accueil",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/Blog",
-        "destination": "/blog.html"
-      },
+ 
+ 
       {
         "source": "/AuRevoir",
         "destination": "/Nouveau dossier/index.html"
       },
-      {
-        "source": "/Projets",
-        "destination": "/projets.html"
-      }
+   
     ]
   }
 }
