@@ -217,7 +217,6 @@
                             buttonElement.textContent = '🗑️';
                             textElement.appendChild(buttonElement);
                         }
-
                     messageElement.appendChild(textElement);
                     document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
                 }
@@ -240,7 +239,7 @@
     
 function isUserConnected() {
   return firebase.auth().currentUser !== null;
-}
+
 
 window.onload = function() {
   firebase.auth().onAuthStateChanged(function(user) {
@@ -250,7 +249,7 @@ window.onload = function() {
     }
   });
     document.getElementById('register-form').style.display = 'none';
-  };
+  }};
     </script>
     <script src="js/script.js"></script>
 </body>
