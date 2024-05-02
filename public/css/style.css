@@ -400,9 +400,9 @@ a {
     width: 300px;
     margin: 0 auto;
     padding: 30px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--darkest);
     border-radius: 15px;
-    background-color: #f8f8f8;
+    background-color: var(--base);
 }
 
 #login-form input,
@@ -411,7 +411,7 @@ a {
     padding: 10px;
     margin: 5px 0 15px 0;
     border: none;
-    background: #e8e8e8;
+    background: var(--base);
 }
 
 #login-form button,
@@ -419,14 +419,14 @@ a {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--lighter);
+    color: var(--lighter);
     cursor: pointer;
 }
 
 #login-form button:hover,
 #register-form button:hover {
-    background-color: #45a049;
+    background-color: var(--base);
 }
 #sendMsg {
   width: 100%;

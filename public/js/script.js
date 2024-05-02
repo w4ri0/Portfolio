@@ -37,28 +37,20 @@ window.onload = function () {
   }, 1100);
 };
 showMenu.addEventListener("click", () => {
-  closeContainer.appendChild(closeButton);
-  navUL.classList.remove("navUL");
-  closeButton.classList.remove("close-button");
-  showMenu.classList.add("show-menu-hidden");
-  navUL.classList.add("navUL-modified");
-  closeButton.classList.add("close-button-modified");
-  closeButton.innerText = "+";
+  navUL.classList.add("show");
   closeButton.classList.add("close");
-  hideMain.style.display = "none";
-  hideFooter.style.display = "none";
-});
-closeButton.addEventListener("click", () => {
-  if (showMenu.classList.contains("show-menu-hidden")) {
-    closeContainer.removeChild(closeButton);
-    navUL.classList.add("navUL");
-    closeButton.classList.add("close-button");
-    showMenu.classList.remove("show-menu-hidden");
-    navUL.classList.remove("navUL-modified");
-    closeButton.classList.remove("close-button-modified");
-    closeButton.innerText = "";
+  closeButton.innerHTML = "X";
+  closeButton.classList.add("close-button");
+  closeContainer.appendChild(closeButton);
+  closeButton.addEventListener("click", () => {
+    navUL.classList.remove("show");
     closeButton.classList.remove("close");
-    hideMain.style.display = "block";
-    hideFooter.style.display = "block";
-  }
+    closeButton.innerHTML = "";
+  });
 });
+hideMain.addEventListener("click", () => {
+  navUL.classList.remove("show");
+  closeButton.classList.remove("close");
+  closeButton.innerHTML = "";
+});
+
