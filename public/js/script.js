@@ -53,8 +53,3 @@ hideMain.addEventListener("click", () => {
   closeButton.classList.remove("close");
   closeButton.innerHTML = "";
 });
-hideFooter.addEventListener("click", () => {
-  navUL.classList.remove("show");
-  closeButton.classList.remove("close");
-  closeButton.innerHTML = "";
-});
