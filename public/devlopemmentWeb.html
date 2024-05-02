@@ -48,26 +48,25 @@
     <!-- Formulaire de connexion -->
 <div id="connected-user"></div>
 <div id="conversationID"></div>
-    <form id="login-form">
-        <h2>Connexion</h2>
-        <label for="login-email">Email:</label>
-        <input type="email" id="login-email" required>
-        <label for="login-password">Mot de passe:</label>
-        <input type="password" id="login-password" required>
-        <label for="conversationId">Conversation ID:</label>
-        <input type="text" id="conversationId" name="conversationId">
-        <button type="submit">Se connecter</button>
+    <form id="login-form" class="form">
+        <h2 class="form-title">Connexion</h2>
+        <label for="login-email" class="form-label">Email:</label>
+        <input type="email" id="login-email" class="form-input" required>
+        <label for="login-password" class="form-label">Mot de passe:</label>
+        <input type="password" id="login-password" class="form-input" required>
+        <label for="conversationId" class="form-label">Conversation ID:</label>
+        <input type="text" id="conversationId" name="conversationId" class="form-input">
+        <button type="submit" class="form-button">Se connecter</button>
     </form>
 
     <!-- Formulaire d'inscription -->
-    <form id="register-form">
-        <h2>Inscription</h2>
-        <label for="register-email">Email:</label>
-        <input type="email" id="register-email" required>
-
-        <label for="register-password">Mot de passe:</label>
-        <input type="password" id="register-password" required>
-        <button type="submit">S'inscrire</button>
+    <form id="register-form" class="form">
+        <h2 class="form-title">Inscription</h2>
+        <label for="register-email" class="form-label">Email:</label>
+        <input type="email" id="register-email" class="form-input" required>
+        <label for="register-password" class="form-label">Mot de passe:</label>
+        <input type="password" id="register-password" class="form-input" required>
+        <button type="submit" class="form-button">S'inscrire</button>
     </form>
 
     <div id="connected-user"></div>
