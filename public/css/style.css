@@ -426,7 +426,7 @@ a {
 
 #login-form button:hover,
 #register-form button:hover {
-    background-color: var(--base);
+    background-color: var(--secondary);
     color:black;
 }
 #sendMsg {
