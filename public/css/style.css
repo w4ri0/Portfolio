@@ -394,3 +394,37 @@ a {
   background: none;
   margin-left:7%;
 }
+/* Styliser le formulaire de connexion et d'inscription */
+.login-form,
+.register-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #f8f8f8;
+}
+
+.login-form input,
+.register-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: none;
+    background: #e8e8e8;
+}
+
+.login-form button,
+.register-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.login-form button:hover,
+.register-form button:hover {
+    background-color: #45a049;
+}
