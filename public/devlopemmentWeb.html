@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,10 +9,7 @@
         content="Gabriel DAGON est un Opérateiur numérique chez digitanie.Ce site web montre ses réalisations et permet de le contacter">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-
     <header class="navbar">
         <button role="button" aria-label="bouton" id="show-menu" class="show-menu">
             <div class="nav-icon"><img src="menu.png" class="menu" alt="image menu"></div>
@@ -28,8 +24,7 @@
                         <li><a href="/Portfolio">Portfolio Web</a></li>
                     </div>
                     <div class="li-container">
-                        <li><a href="/AuRevoir">bye
-                        </a></li>
+                        <li><a href="/AuRevoir">Kittens</a></li>
                     </div>
                     <div class="li-container">
                         <li><a href="#">Bunnies</a></li>
@@ -41,6 +36,8 @@
             </div>
         </nav>
     </header>
+    <img src="gsfc-20171208-archive-e000760orig-stpatricksaurora-iotd.webp" alt="image de fond"
+        class="background-image">
     <div class="container">
         <h1>Chat</h1>
     <div class="container">
@@ -49,37 +46,31 @@
     <!-- Formulaire de connexion -->
 <div id="connected-user"></div>
 <div id="conversationID"></div>
-    <form id="login-form" class="form">
-        <h2 class="form-title">Connexion</h2>
-        <label for="login-email" class="form-label">Email:</label>
-        <input type="email" id="login-email" class="form-input" required>
-        <label for="login-password" class="form-label">Mot de passe:</label>
-        <input type="password" id="login-password" class="form-input" required>
-        <label for="conversationId" class="form-label">Conversation ID:</label>
-        <input type="text" id="conversationId" name="conversationId" class="form-input">
-        <button type="submit" class="form-button">Se connecter</button>
+    <form id="login-form">
+        <h2>Connexion</h2>
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" required>
+        <label for="login-password">Mot de passe:</label>
+        <input type="password" id="login-password" required>
+        <label for="conversationId">Conversation ID:</label>
+        <input type="text" id="conversationId" name="conversationId">
+        <button type="submit">Se connecter</button>
     </form>
-
     <!-- Formulaire d'inscription -->
-    <form id="register-form" class="form">
-        <h2 class="form-title">Inscription</h2>
-        <label for="register-email" class="form-label">Email:</label>
-        <input type="email" id="register-email" class="form-input" required>
-        <label for="register-password" class="form-label">Mot de passe:</label>
-        <input type="password" id="register-password" class="form-input" required>
-        <button type="submit" class="form-button">S'inscrire</button>
+    <form id="register-form">
+        <h2>Inscription</h2>
+        <label for="register-email">Email:</label>
+        <input type="email" id="register-email" required>
+        <label for="register-password">Mot de passe:</label>
+        <input type="password" id="register-password" required>
+        <button type="submit">S'inscrire</button>
     </form>
-
     <div id="connected-user"></div>
-
     <div id="messages"></div>
-
     <div id="sendMsg">
         <input type="text" id="msgTxt" placeholder="ENTER YOUR MSG...">
         <input type="submit" id="msgBtn" value="send" onclick="module.sendMsg()">
-
     </div>
-
     <script src="js/script.js">
     </script>
     <script>    module = {};
@@ -98,11 +89,9 @@
         const db = getDatabase(app);
         const auth = getAuth(app);
         const analytics = getAnalytics(app);
-
         // variables
         var msgTxt = document.getElementById('msgTxt');
         var user;
-
         //To register the user 
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -141,7 +130,6 @@
         console.log(errorMessage);
     });
         });
-
         // To sign out the user
         document.getElementById('logout-btn').addEventListener('click', function () {
             signOut(auth)
@@ -156,8 +144,6 @@
                     console.log(errorMessage);
                 });
         });
-
-
         // TO SEND MESSAGES
         module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
@@ -172,12 +158,10 @@
                 getMessages();
             }
         }
-
         function generateMessageId() {
             const messageId = Math.floor(Math.random() * 1000000);
             return messageId.toString();
         }
-
         // TO RECEIVE MSG
         // On page load, display conversation ID and user email
         window.addEventListener('load', function() {
@@ -190,7 +174,6 @@
         });
        
         // TO DELETE MSG
-
         //TO RETRIEVE THE MESSAGES
         //TO RETRIEVE THE MESSAGES
         function getMessages() {
@@ -208,27 +191,25 @@
                         messageElement.setAttribute('class', 'outer');
                          textElement.appendChild(buttonElement);
                     } else {
-                            messageElement.setAttribute('class', 'outer');
-                            messageElement.setAttribute('id', data.key);
-                            textElement.setAttribute('id', 'inner');
-                            textElement.setAttribute('class', 'notMe');
-                            textElement.textContent = data.val().user + " : " + data.val().msg;
-                            buttonElement.setAttribute('id', 'dltMsg');
-                            buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
-                            buttonElement.textContent = '🗑️';
-                            textElement.appendChild(buttonElement);
-                        }
+                        messageElement.setAttribute('class', 'outer');
+                        messageElement.setAttribute('id', data.key);
+                        textElement.setAttribute('id', 'inner');
+                        textElement.setAttribute('class', 'notMe');
+                        textElement.textContent = data.val().user + " : " + data.val().msg;
+                        buttonElement.setAttribute('id', 'dltMsg');
+                        buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
+                        buttonElement.textContent = '🗑️';
+                        textElement.appendChild(buttonElement);
+                    }
                     messageElement.appendChild(textElement);
                     document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
                 }
             });
         }
-
         module.dltMsg = function dltMsg(messageId) {
             const conversationId = document.getElementById('conversationId').value;
             remove(ref(db, 'chats/' + conversationId + '/messages/' + messageId));
         }
-
         // WHEN MSG IS DELETED
         onChildRemoved(ref(db, "chats/*/messages/"), (data) => {
             var msgBox = document.getElementById(data.key);
@@ -236,23 +217,7 @@
                 messages.removeChild(msgBox);
             }
         })
-
-    
-function isUserConnected() {
-  return firebase.auth().currentUser !== null;
-
-
-window.onload = function() {
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      document.getElementById('login-form').style.display = 'none';
-      document.getElementById('register-form').style.display = 'none';
-    }
-  });
-    document.getElementById('register-form').style.display = 'none';
-  }};
     </script>
     <script src="js/script.js"></script>
 </body>
-
 </html>
