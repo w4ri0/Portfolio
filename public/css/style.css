@@ -419,7 +419,7 @@ a {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: var(--lighter);
+    background-color: var(--darkest);
     color: var(--lighter);
     cursor: pointer;
 }
@@ -427,6 +427,7 @@ a {
 #login-form button:hover,
 #register-form button:hover {
     background-color: var(--base);
+    color:black;
 }
 #sendMsg {
   width: 100%;
