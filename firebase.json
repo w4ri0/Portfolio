@@ -16,8 +16,8 @@
         "destination": "/blog.html"
       },
       {
-        "source": "/Contact",
-        "destination": "/contact.html"
+        "source": "/AuRevoir",
+        "destination": "/public/Nouveau dossier/index.html"
       },
       {
         "source": "/Projets",
