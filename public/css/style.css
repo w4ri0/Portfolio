@@ -428,7 +428,7 @@ a {
 #register-form button:hover {
     background-color: #45a049;
 }
-#sendmsg {
+#sendMsg {
   width: 100%;
   padding: 10px;
   border: none;
@@ -437,7 +437,7 @@ a {
   cursor: pointer;
 }
 
-#sendmsg:hover {
+#sendMsg:hover {
   background-color: var(--secondary);
 }
 /* Styliser la zone de saisie */
