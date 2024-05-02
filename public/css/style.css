@@ -432,10 +432,9 @@ a {
 #sendMsg {
   width: 100%;
   padding: 10px;
-  border: none;
+  border-radius: 4px;
   background-color: var(--base);
   color: var(--darkest);
-  cursor: pointer;
 }
 
 #sendMsg:hover {
