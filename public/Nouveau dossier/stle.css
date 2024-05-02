@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 01%;
+    box-sizing: border-box;
+    background-color: #272255;
+}
+p{
+    font-size: 1.5rem;
+    color: #ccc;
+    font-family: 'Arial', sans-serif;
+}
+h2{
+    font-size: 2rem;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+img{
+color:white;
+margin-left: 61%;
+width:40%;
+}
+.name{text-align: right;}
