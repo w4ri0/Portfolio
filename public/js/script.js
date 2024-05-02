@@ -52,17 +52,4 @@ hideMain.addEventListener("click", () => {
   navUL.classList.remove("show");
   closeButton.classList.remove("close");
   closeButton.innerHTML = "";
-});
-// Supposons que vous ayez une fonction 'isUserConnected' qui retourne true si l'utilisateur est connecté
-function isUserConnected() {
-  // Votre logique ici
-if (localStorage.getItem('token')) {
-  return true;
-}
 
-window.onload = function() {
-  if (isUserConnected()=true) {
-    document.getElementById('login-form').style.display = 'none';
-    document.getElementById('register-form').style.display = 'none';
-  }
-}}
