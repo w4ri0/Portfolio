@@ -460,7 +460,7 @@ a {
 }
 
 /* Styliser les messages dans la boîte de chat */
-#sendMsg #messages {
+#messages {
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 4px;
