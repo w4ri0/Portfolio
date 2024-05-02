@@ -17,7 +17,7 @@
       },
       {
         "source": "/AuRevoir",
-        "destination": "/public/Nouveau dossier/index.html"
+        "destination": "/Nouveau dossier/index.html"
       },
       {
         "source": "/Projets",
