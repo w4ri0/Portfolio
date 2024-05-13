@@ -86,6 +86,7 @@
         import { getDatabase, ref, onChildAdded, onChildRemoved, push, set } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
         import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js';
         const auth=getAuth();
+        
         //To register the user 
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -158,7 +159,21 @@
         });
 
         // ...
+module.sendMsg= function sendMsg() {
+    var messageInput = document.getElementById('messageInput').value;
+    var conversationId = document.getElementById('conversationId').value;
+    const messagesRef = ref(db, 'chats/' + conversationId + '/messages');
 
+    set(push(messagesRef), {
+        message: messageInput,
+        timestamp: Date.now(),
+        // Add other properties like 'sender' if needed
+    }).then(() => {
+        console.log("Message sent");
+    }).catch((error) => {
+        console.error("Error sending message:", error);
+    });
+}
         //TO RETRIEVE THE MESSAGES
         function getMessages() {
             console.log("Retrieving messages...");
