@@ -88,60 +88,62 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js"></script>
     <script type="module">
-        import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const auth = getAuth(app);
-        const analytics = getAnalytics(app);
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+        import { getDatabase, ref, onChildAdded, onChildRemoved, push, set } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js';
+        const auth=getAuth();
+        const db = getDatabase();
+        const analytics = getAnalytics();
+        var curentUser = null;
 
-        // variables
-        var msgTxt = document.getElementById('msgTxt');
-        var user;
 
         //To register the user 
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
             var email = document.getElementById('register-email').value;
             var password = document.getElementById('register-password').value;
+            console.log("Registering user:", email);
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in 
                     user = userCredential.user;
-                    alert(user.mail);
+                    console.log("User registered:", user.email);
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                     // Remove duplicate call to getMessages()
                 })
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    console.log(errorMessage);
+                    console.log("Registration error:", errorMessage);
                 });
         });
+
         // To authenticate the user
         document.getElementById('login-form').addEventListener('submit', function (event) {
             event.preventDefault();
             var email = document.getElementById('login-email').value;
             var password = document.getElementById('login-password').value;
+            console.log("Authenticating user:", email);
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in
                     user = userCredential.user;
-                    alert(user.mail);
+                    console.log("User authenticated:", user.email);
                     document.getElementById('connected-user').textContent = "Connected User: " + user.email;
                     // Remove duplicate call to getMessages()
                 })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-    });
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log("Authentication error:", errorMessage);
+                });
         });
+
 
         // To sign out the user
         document.getElementById('logout-btn').addEventListener('click', function () {
+            console.log("Signing out user:", user.email);
             signOut(auth)
                 .then(() => {
                     // Sign-out successful
@@ -151,10 +153,9 @@
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    console.log(errorMessage);
+                    console.log("Sign out error:", errorMessage);
                 });
         });
-
         // TO SEND MESSAGES
         module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;
@@ -169,70 +170,58 @@
                 getMessages();
             }
         }
-
         function generateMessageId() {
             const messageId = Math.floor(Math.random() * 1000000);
             return messageId.toString();
         }
-
         // TO RECEIVE MSG
         // On page load, display conversation ID and user email
         window.addEventListener('load', function() {
             var conversationId = document.getElementById('conversationId').value;
-            document.getElementById('connected-user').textContent = "Connected User: " + user.email;
+                console.log("User loaded:", user.email);
+                document.getElementById('connected-user').textContent = "Connected User: " + user.email;
             document.getElementById('conversationID').textContent = "Conversation ID: " + conversationId;
         });
-       
-        // TO DELETE MSG
 
-        //TO RETRIEVE THE MESSAGES
+        // ...
+module.sendMsg= function sendMsg() {
+    var messageInput = document.getElementById('messageInput').value;
+    var conversationId = document.getElementById('conversationId').value;
+    const messagesRef = ref(db, 'chats/' + conversationId + '/messages');
+
+    set(push(messagesRef), {
+        message: messageInput,
+        timestamp: Date.now(),
+        // Add other properties like 'sender' if needed
+    }).then(() => {
+        console.log("Message sent");
+    }).catch((error) => {
+        console.error("Error sending message:", error);
+    });
+}
         //TO RETRIEVE THE MESSAGES
         function getMessages() {
+            console.log("Retrieving messages...");
             var conversationId = document.getElementById('conversationId').value;
             const messages = ref(db, 'chats/' + conversationId + '/messages');
             onChildAdded(messages, (data) => {
-                var messageElement = document.getElementById(data.key); // Check if message already exists
-                if (!messageElement) { // Only append the message if it doesn't already exist
-                    messageElement = document.createElement('div');
-                    var textElement = document.createElement('div');
-                    var buttonElement = document.createElement('button');
-                    var user = user.email;
-                    if (data.val().user.email == user) {
-                        messages.innerHTML += "<div style=justify-content:end class=outer id=" + data.key + "><div id=inner class=me>you : " + data.val().msg + "<button id=dltMsg onclick=module.dltMsg('" + data.key + "')>DELETE</button></div></div>"
-                        messageElement.setAttribute('class', 'outer');
-                         textElement.appendChild(buttonElement);
-                    } else {
-                        messageElement.setAttribute('class', 'outer');
-                        messageElement.setAttribute('id', data.key);
-                        textElement.setAttribute('id', 'inner');
-                        textElement.setAttribute('class', 'notMe');
-                        textElement.textContent = data.val().user + " : " + data.val().msg;
-                        buttonElement.setAttribute('id', 'dltMsg');
-                        buttonElement.setAttribute('onclick', "module.dltMsg('" + data.key + "')");
-                        buttonElement.textContent = '🗑️';
-                        textElement.appendChild(buttonElement);
-                    }
-
-                    messageElement.appendChild(textElement);
-                    document.getElementById('messages').appendChild(messageElement); // Append messageElement to the 'messages' container
-                }
+                // ...
             });
         }
 
-        module.dltMsg = function dltMsg(messageId) {
-            const conversationId = document.getElementById('conversationId').value;
-            remove(ref(db, 'chats/' + conversationId + '/messages/' + messageId));
-        }
+        // ...
 
         // WHEN MSG IS DELETED
         onChildRemoved(ref(db, "chats/*/messages/"), (data) => {
             var msgBox = document.getElementById(data.key);
             if (msgBox) { // Check if message element exists before removing it
                 messages.removeChild(msgBox);
+                console.log("Message deleted:", data.key);
             }
-        })
+        });
     </script>
     <script src="js/script.js"></script>
 </body>
+
 
 </html>
