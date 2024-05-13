@@ -149,8 +149,8 @@
             var msg = msgTxt.value;
             var conversationId = document.getElementById('conversationId').value;
             if (msg != '' && conversationId != '') {
-                var msg = msgTxt.value;
-                var conversationId = document.getElementById('conversationId').value;
+                msg = msgTxt.value;
+                conversationId = document.getElementById('conversationId').value;
                 var messageId = generateMessageId(); // Generate a random messageId
                 set(ref(db, "chats/" + conversationId + "/messages/" + messageId), {
                     user: user.email,
