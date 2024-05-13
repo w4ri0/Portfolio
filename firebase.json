@@ -28,8 +28,5 @@
         "destination": "/projets.html"
       }
     ]
-  },
-  "database": {
-    "rules": "database.rules.json"
   }
 }
