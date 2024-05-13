@@ -149,17 +149,16 @@
             var msg = msgTxt.value;
             var conversationId = document.getElementById('conversationId').value;
             if (msg != '' && conversationId != '') {
-                msg = msgTxt.value;
-                conversationId = document.getElementById('conversationId').value;
                 var messageId = generateMessageId(); // Generate a random messageId
-                set(ref(db, "chats/" + conversationId + "/messages/" + messageId), {
+                set(ref(db, "chats/" + document.getElementById('conversationId').value + "/messages/" + messageId), {
                     user: user.email,
                     msg: msg
                 });
+            }
                 msgTxt.value = '';
                 getMessages();
             }
-        }
+        
         function generateMessageId() {
             const messageId = Math.floor(Math.random() * 1000000);
             return messageId.toString();
