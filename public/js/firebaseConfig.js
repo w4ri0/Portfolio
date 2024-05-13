@@ -1,3 +1,4 @@
+const { initializeApp } = require("firebase/app");
 
 
 var firebaseConfig = {
@@ -18,3 +19,4 @@ var firebaseConfig = {
   measurementId: "G-7BKJW3RTS1"
 
 };
+const app=initializeApp(firebaseConfig);
