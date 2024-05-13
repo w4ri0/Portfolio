@@ -91,7 +91,7 @@
         const analytics = getAnalytics(app);
         // variables
         var msgTxt = document.getElementById('msgTxt');
-        var user;
+        var user=currentUser.email;
         //To register the user 
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
