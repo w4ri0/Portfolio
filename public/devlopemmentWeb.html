@@ -163,7 +163,7 @@
         });
 
         // ...
-module.sendMsg= function sendMsg() {
+function sendMsg() {
     var messageInput = document.getElementById('messageInput').value;
     var conversationId = document.getElementById('conversationId').value;
     const messagesRef = ref(db, 'chats/' + conversationId + '/messages');
