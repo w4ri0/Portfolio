@@ -85,7 +85,7 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
         import { getDatabase, ref, onChildAdded, onChildRemoved, push, set } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
         import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js';
-
+        const auth=getAuth();
         //To register the user 
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
