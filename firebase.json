@@ -1,7 +1,11 @@
 {
   "hosting": {
     "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "/Portfolio",
@@ -24,5 +28,8 @@
         "destination": "/projets.html"
       }
     ]
+  },
+  "database": {
+    "rules": "database.rules.json"
   }
 }
