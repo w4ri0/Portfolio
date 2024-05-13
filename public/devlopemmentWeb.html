@@ -88,9 +88,9 @@
         const auth=getAuth();
         const db = getDatabase();
         const analytics = getAnalytics();
-        var user = null;
+        var curentUser = null;
 
-        
+
         //To register the user 
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
